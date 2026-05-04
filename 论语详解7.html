@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《论语》详解7 - 学而与闻道</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F7F5EB;
+            --text-color: #2C2C2C;
+            --accent: #8E354A;
+            --quote-bg: #EFEBE9;
+            --border-color: #D4CFC5;
+            --muted: #6B6B6B;
+            --explain-bg: #FAFAFA;
+            --sidebar-bg: #F0EDE6;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1A1A1A;
+            --text-color: #E8E6E1;
+            --quote-bg: #2A2A2A;
+            --explain-bg: #252525;
+            --sidebar-bg: #222222;
+            --border-color: #404040;
+            --muted: #A0A0A0;
+        }
+
+        [data-theme="sepia"] {
+            --bg-color: #F4ECD8;
+            --text-color: #3D3326;
+            --quote-bg: #E8DFC7;
+            --explain-bg: #F0E6D0;
+            --sidebar-bg: #E8DFC7;
+            --border-color: #C9BFA3;
+            --muted: #7A6F5D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.9;
+            font-size: 17px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--explain-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-title {
+            font-size: 14px;
+            color: var(--muted);
+            padding: 16px 0;
+            margin-right: 20px;
+            border-right: 1px solid var(--border-color);
+            padding-right: 20px;
+        }
+
+        .nav-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: var(--accent);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 15px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn.normal {
+            background: transparent;
+            color: var(--text-color);
+        }
+
+        .nav-btn.normal:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .nav-spacer {
+            flex: 1;
+        }
+
+        .theme-btns {
+            display: flex;
+            gap: 6px;
+        }
+
+        .theme-btn {
+            padding: 6px 12px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--text-color);
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .layout {
+            display: flex;
+            margin-top: 60px;
+        }
+
+        .sidebar {
+            width: 220px;
+            min-width: 220px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            padding: 30px 0;
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            padding: 0 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 4px;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 12px 24px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(142, 53, 74, 0.1);
+            border-left-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .sidebar-nav a.active {
+            background: rgba(142, 53, 74, 0.15);
+            border-left-color: var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 220px;
+            padding: 40px 60px;
+            max-width: 1000px;
+        }
+
+        .page-header {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .chapter-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 20px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+
+        .page-header .subtitle {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .chapter-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+
+        .chapter-divider {
+            margin: 50px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .chapter-divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .chapter-divider span {
+            background: var(--bg-color);
+            padding: 0 30px;
+            position: relative;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        .content-section {
+            background: var(--explain-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 35px;
+            margin-bottom: 30px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 16px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--quote-bg) 0%, var(--explain-bg) 100%);
+            border-left: 5px solid var(--accent);
+        }
+
+        .lunyu-sentence {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent);
+            text-align: center;
+            padding: 25px 20px;
+            letter-spacing: 2px;
+            line-height: 1.9;
+        }
+
+        .sentence-origin {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        .scholars-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .scholar-card {
+            padding: 18px 22px;
+            background: var(--bg-color);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .scholar-name {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scholar-name::before {
+            content: "";
+            width: 4px;
+            height: 14px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .scholar-interpretation {
+            color: var(--text-color);
+            line-height: 1.75;
+            font-size: 15px;
+        }
+
+        .explanation-content {
+            text-align: justify;
+        }
+
+        .explanation-content p {
+            margin-bottom: 1.4em;
+            text-indent: 2em;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+            background: linear-gradient(transparent 60%, rgba(142, 53, 74, 0.12) 60%);
+            padding: 0 2px;
+        }
+
+        .key-quote {
+            margin: 28px 0;
+            padding: 22px 28px;
+            background: var(--quote-bg);
+            border-left: 4px solid var(--accent);
+        }
+
+        .key-quote p {
+            margin-bottom: 0.8em;
+            text-indent: 0;
+        }
+
+        .key-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .word-analysis {
+            margin: 28px 0;
+            padding: 22px;
+            background: var(--quote-bg);
+            border-radius: 6px;
+        }
+
+        .word-item {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .word-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .word {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .word-meaning {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .poem-block {
+            margin: 35px 0;
+            padding: 28px;
+            background: linear-gradient(135deg, var(--quote-bg) 0%, transparent 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .poem-title {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .poem-content {
+            font-size: 15px;
+            line-height: 2.3;
+            white-space: pre-line;
+            font-style: italic;
+        }
+
+        .conclusion-box {
+            margin-top: 35px;
+            padding: 28px;
+            background: var(--quote-bg);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .conclusion-title {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 30px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .top-nav {
+                padding: 0 16px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .nav-title {
+                padding-right: 12px;
+                margin-right: 12px;
+            }
+
+            .nav-btn {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            .lunyu-sentence {
+                font-size: 18px;
+            }
+
+            .content-section {
+                padding: 24px 20px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-title"><a href="index.html">📚 国学经典</a></div>
+        <a href="论语详解7.html" class="nav-btn">《论语》</a>
+        <a href="#" class="nav-btn normal">《大学》</a>
+        <a href="#" class="nav-btn normal">《中庸》</a>
+        <a href="#" class="nav-btn normal">《孟子》</a>
+        <div class="nav-spacer"></div>
+        <div class="theme-btns">
+            <button class="theme-btn" onclick="setTheme('light')">日间</button>
+            <button class="theme-btn" onclick="setTheme('sepia')">羊皮纸</button>
+            <button class="theme-btn" onclick="setTheme('dark')">夜间</button>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录导航</div>
+            <ul class="sidebar-nav">
+                <li><a href="#chapter1">学而时习（上）</a></li>
+                <li><a href="#chapter2">学而时习（中）</a></li>
+                <li><a href="#chapter3">学而时习（下）</a></li>
+                <li><a href="#chapter4">朝闻道夕死</a></li>
+                <li><a href="#chapter5">逝者如斯夫</a></li>
+                <li><a href="#chapter6">攻乎异端</a></li>
+                <li><a href="#chapter7">道不同相谋</a></li>
+                <li><a href="#chapter8">有教无类</a></li>
+                <li><a href="#chapter9">士志於道</a></li>
+                <li><a href="#chapter10">贤哉回也</a></li>
+                <li><a href="#chapter11">贫而无怨难</a></li>
+                <li><a href="#chapter12">贫而乐富礼</a></li>
+                <li><a href="#chapter13">齐一变至道</a></li>
+                <li><a href="#chapter14">放于利而行</a></li>
+                <li><a href="#chapter15">好勇疾贫乱</a></li>
+                <li><a href="#chapter16">善人为邦百年</a></li>
+                <li><a href="#chapter17">必有世后仁</a></li>
+                <li><a href="#chapter18">庶富教</a></li>
+                <li><a href="#chapter19">善人教民</a></li>
+                <li><a href="#chapter20">以不教民战</a></li>
+                <li><a href="#chapter21">哀公问社</a></li>
+                <li><a href="#chapter22">夷狄有君</a></li>
+                <li><a href="#chapter23">为政以德</a></li>
+                <li><a href="#chapter24">政者正也</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content fade-in">
+            <div class="page-header">
+                <div class="chapter-badge">Chapter 7</div>
+                <h1>《论语》详解</h1>
+                <p class="subtitle">学而与闻道 · 缠中说禅</p>
+            </div>
+
+            <!-- 第一章：学而时习上 -->
+            <div id="chapter1" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>学而时习（上）：何为学</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：学而时习之，不亦说乎？</div>
+                    <div class="sentence-origin">—— 《论语》· 学而篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                学了知识，按时去实习，不也很高兴吗？（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                学了为人处世的道理，时常练习，不很高兴吗？（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                学习而经常实践，不是很快乐吗？（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这三句话只是一句话，这是一个整体，是整个儒家思想的概括。浩如烟海的儒家经典，不过是这三句话的一个推演。</p>
+
+                        <p><strong>一、谁学？</strong></p>
+                        <p>"学"前面少了一个主语。谁学？答案是"<span class="highlight">君子</span>"。</p>
+                        <p>整个儒家学说，归根结底，就是"<span class="highlight">君子学</span>"。何谓"君子"？"君子"就是要成为"君"的人。君子学最终的目的就是要成为"君"，成为"<span class="highlight">圣人</span>"。</p>
+
+                        <div class="key-quote">
+                            <p>为什么是"君子学"，而不是"圣人学"？"圣人"是无学的。整部《论语》，整个儒家学说，就是讲述如何从"君子""学而"成"君"、也就成"圣人"的过程，只有这个过程才有所谓"学"的问题。</p>
+                        </div>
+
+                        <p><strong>二、学什么？</strong></p>
+                        <p>千古以来，基本所有的解释都把这"学"当成各种一般技能、学问的学习。如果真这样，那不妨把"房中术"当成宾语，这话就变成"学（房中术）而时习之"，孔子真成"老二"了。</p>
+                        <p>但《论语》归根结底是探讨儒家的核心问题，是如何成"圣人"的问题，因此这里的"学"不是一般教育意义上的，而是"<span class="highlight">闻道、见道、学道</span>"。</p>
+
+                        <p><strong>三、怎样学？</strong></p>
+                        <p>这里的"学"，首先是"<span class="highlight">闻道</span>"，不闻无以学；其次是"<span class="highlight">见道</span>"，不见亦无以学。只有"见道"以后，才可以真正地"学道"。</p>
+                        <p>和"学"同源的是"校"，也就是"效"，就是"效法"。儒家的"学"，不是一个人的瞎修盲练，而是要"效法""圣人"，不断"校对"。</p>
+
+                        <div class="key-quote">
+                            <p>而儒家的思想是积极入世的，因此这"校对"的工夫，就不光光是"对照""圣人"理论，而是必须针对现实，脱离了现实，就无所谓"校对"，也无所谓"学"了。</p>
+                        </div>
+
+                        <p><strong>四、学的完整定义</strong></p>
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">问：什么是学？</div>
+                                <div class="word-meaning">答：闻"圣人之道"、见"圣人之道"、"对照""圣人"、在现实社会中不断地"校对"</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">问：谁学？</div>
+                                <div class="word-meaning">答：君子</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">问：学什么？</div>
+                                <div class="word-meaning">答：成"圣人"之道</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">问：学了能成什么？</div>
+                                <div class="word-meaning">答："圣人"</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"学而时习之"</strong>中的"学"，不是一般技能的学习，而是成为"圣人"的学问。主语是"君子"，宾语是成"圣人之道"。学的方法是：闻、见、学、行，效法圣人，在现实中不断校对。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第二章：学而时习下 -->
+            <div id="chapter2" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>学而时习（中）：何为习</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">有朋自远方来，不亦乐乎？<br>人不知而不愠，不亦君子乎？</div>
+                    <div class="sentence-origin">—— 《论语》· 学而篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                有志同道合的人从远处来，不也很快乐吗？人家不了解我，我却不怨恨，不也是君子吗？（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                志同道合的朋友从远方来共学，不很快乐吗？别人不知道自己，不怨恨，不很有德行吗？（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                朋友从远方来，不是很快乐吗？别人不了解自己，自己也不生气，这不正是君子吗？（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>为什么"朋"不是"朋友"？因为"朋"在古代特指"<span class="highlight">同类</span>"。《易经》："<span class="highlight">方以类聚，物以群分</span>"。只有同类才能相聚，只有"闻、见、学、行"同一圣人之道的，才算"朋"。</p>
+
+                        <p>"<span class="highlight">乐</span>"，不是一般的快乐，而是"<span class="highlight">乐以忘忧</span>"之乐，是"不愠"的<span class="highlight">进一步延伸</span>。"有朋自远方来"，是"学而时习之"后的必然结果，也是"不愠"境界的体现。</p>
+
+                        <div class="key-quote">
+                            <p>"人不知而不愠"，这是<span class="highlight">最关键的一句</span>。大多数人的"愠"，都因为"人不知"。而真正"闻、见、学、行"圣人之道的人，是<span class="highlight">"人不知而不愠"</span>——别人不了解、不理解自己，却一点也不忧患、一点也不烦恼。</p>
+                        </div>
+
+                        <p>"<span class="highlight">君子</span>"，不是指道德高尚的人，而是指"<span class="highlight">闻、见、学、行</span>圣人之道的人"，是"<span class="highlight">不愠</span>"的人。</p>
+
+                        <p>三个"不亦"，是层层递进的：</p>
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">第一层：不亦说乎</div>
+                                <div class="word-meaning">学而时习之 → 不愠 → 说（悦）</div>
+                                <div class="word-explanation">通过学习圣人之道，达到没有忧患的境界，内心喜悦。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">第二层：不亦乐乎</div>
+                                <div class="word-meaning">有朋自远方来 → 乐</div>
+                                <div class="word-explanation">同类相聚，乐以忘忧，是"不愠"的进一步延伸。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">第三层：不亦君子乎</div>
+                                <div class="word-meaning">人不知而不愠 → 君子</div>
+                                <div class="word-explanation">即使人不知，也不忧患，这才是真正"闻、见、学、行"圣人之道的君子。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p>《论语》开篇三个"不亦"，是<span class="highlight">"闻、见、学、行"</span>圣人之道总纲的<span class="highlight">三个缺一不可的层次</span>：</p>
+                            <p style="text-indent:2em; margin-top:10px;">一、"<span class="highlight">说</span>"——学而时习之，达到"不愠"，内心喜悦；</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">乐</span>"——有朋自远方来，同类相聚，乐以忘忧；</p>
+                            <p style="text-indent:2em;">三、"<span class="highlight">不愠</span>"——人不知而不愠，这才是真正的君子境界。</p>
+                            <p style="margin-top:15px;">最终目标：成就"<span class="highlight">不愠的世界</span>"——没有战争、没有饥荒、没有欺诈、人人"不愠"的共产主义大同世界。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第三章：朝闻道夕死 -->
+            <div id="chapter3" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>学而时习（下）：三不亦</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？</div>
+                    <div class="sentence-origin">—— 《论语》· 学而篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                学了知识按时实习，有朋友从远方来，别人不了解我——这些不都是很高兴的事吗？
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                学了为人处世的道理时常练习，有志同道合的朋友从远方来共学，别人不知道自己却不怨恨——这不很有德行吗？
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                学习而经常实践，有朋友从远方来，别人不了解自己也不生气——这不正是君子吗？
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这三个"不亦"，是<span class="highlight">天、地、人</span>的结构：</p>
+
+                        <p><strong>一、"学而时习之"言"天"</strong></p>
+                        <p>天与天时，"天、天时"是一而二、二而一的。儒家对天时、天命的态度就是"<span class="highlight">与天其时而天与其时</span>"。</p>
+
+                        <p><strong>二、"有朋自远方来"言"地"</strong></p>
+                        <p>"朋"者，"凤"之古字，本义为凤凰。"有朋自远方来"就是"有凤来仪"。儒家对"地利"的态度是"<span class="highlight">与地其利而地与其利</span>"。</p>
+
+                        <p><strong>三、"人不知而不愠"言"人"</strong></p>
+                        <p>"人"，天地之心。"人不知"的"知"是"智"的古字，"人不知"就是"人没有智慧"。行"圣人之道"的人，要如"南风之熏"般地熏染他们，把"没有郁结的世界"改造成"<span class="highlight">不愠的世界</span>"。</p>
+
+                        <div class="key-quote">
+                            <p>"人不知而不愠"，就是要成就"<span class="highlight">与人其和而人与其和</span>"，最终成就真正的"人和"。</p>
+                        </div>
+
+                        <p><strong>四、三不亦与修身齐家平天下</strong></p>
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"说"（悦）</div>
+                                <div class="word-meaning">修身</div>
+                                <div class="word-explanation">个体的"不愠"，学而时习之，修身，其结果是"悦"</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"乐"</div>
+                                <div class="word-meaning">齐家</div>
+                                <div class="word-explanation">家的"不愠"，有朋自远方来，齐家，其结果是"乐"</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"不愠"→"君子"</div>
+                                <div class="word-meaning">平天下</div>
+                                <div class="word-explanation">天下的"不愠"，人不知而不愠，平天下，其结果是"君子"</div>
+                            </div>
+                        </div>
+
+                        <p><strong>五、"愠"字正解</strong></p>
+                        <p>"愠"发上声，解释为"郁结"。《孔子家语》有"南风之熏兮，可以解吾民之愠兮"。行"圣人之道"的人就是要使得"不知之人"变得"不愠"。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p>明白了这三个"不亦"，就明白"天时、地利、人和"的真正含义。这三句，基于儒家最基本的信念：天、地、人。</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">说</span>"——修身，与天其时而天与其时</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">乐</span>"——齐家，与地其利而地与其利</p>
+                            <p style="text-indent:2em;">三、"<span class="highlight">不愠</span>"——平天下，与人其和而人与其和</p>
+                            <p style="margin-top:15px;"><strong>真正的"人和"，就是"人不愠"的世界，就是天下大同。</strong></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第四章：朝闻道夕死 -->
+            <div id="chapter4" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>朝闻道夕死</span>
+                </div>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                早晨得知真理，晚上死去也是可以的。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                人的终身只是一志愿，求能志愿得觏，此为人生最大一不幸。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                理想、规律不可离失，甚至不惜面临死亡。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这句话被排在三个"不亦"总纲之后，是《论语》的第一条。所谓"闻、见、学、行""圣人之道"，首先要<span class="highlight">"闻其道"</span>。道不闻，则无由"学、行"。</p>
+
+                        <p>千古以来最大的误解，就是把"死"当成"死去"。如果真是"早上闻道，晚上死了"，那晚上才死，中午干什么去了？当鸭子还是学当鸭子去？</p>
+
+                        <div class="key-quote">
+                            <p>其实，"<span class="highlight">死</span>"，不是死去的意思，而是<span class="highlight">"固守"</span>的意思。所谓"固守"，也就是"<span class="highlight">承担</span>"。</p>
+                        </div>
+
+                        <p>而"朝、夕"，不是单纯的"早晨、晚上"，而应该从天、地、人三个角度来考察：</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"天"之角度</div>
+                                <div class="word-meaning">代表时间上的"开始、最后"</div>
+                                <div class="word-explanation">从"闻其道"开始，不断地"固守"直到最终成就"不愠的世界"而不退转。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"地"之角度</div>
+                                <div class="word-meaning">代表"东方、西方"</div>
+                                <div class="word-explanation">整个天下所有地方，无论条件恶劣还是优越，都要"固守"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"人"之角度</div>
+                                <div class="word-meaning">最大的承担就是生死的承担</div>
+                                <div class="word-explanation">出生入死，都要"固守"直到最终成就"不愠的世界"而不退转。</div>
+                            </div>
+                        </div>
+
+                        <p>原来的断句"<span class="highlight">子曰：朝闻道，夕死可矣！</span>"是不对的。正确的断句是<span class="highlight">"子曰：朝闻道夕死，可矣！"</span></p>
+
+                        <p>光"闻"不"死"，是不能行圣人之道的，只能是口头玩意。偷心不死，是不可能行圣人之道的。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"朝闻道夕死，可矣"</strong>，君子从"闻其道"开始，无论任何地方，无论条件恶劣还是优越，甚至出生入死，都要不断地"<span class="highlight">固守</span>"，"<span class="highlight">承担</span>""圣人之道"之行直到最终成就"<span class="highlight">不愠的世界</span>"而不退转。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第四章：逝者如斯夫 -->
+            <div id="chapter4" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>逝者如斯夫</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子在川上曰：逝者如斯夫，不舍昼夜。</div>
+                    <div class="sentence-origin">—— 《论语》· 子罕篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                消逝的时光像河水一样呀！日夜不停地流去。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                像这般的流去啊！日夜都在般的流。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                消逝的一切像这样呀！日夜不停。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>"闻圣人之道"，"朝闻道夕死，可矣"地"承担"，就要开始"见、学、行""圣人之道"。对于这个"承担"的开始，"子在川上"发出了"逝者如斯夫，不舍昼夜"的感慨。</p>
+
+                        <p>其他语录，都是简单的"子曰"，为什么这里偏偏多了"在川上"？"<span class="highlight">川</span>"，不是一般的河流，而是指河的源头，这里更指代"承担""见、学、行""圣人之道"的开始。"闻圣人之道"，就是"见、学、行""圣人之道"的开始、源头，因此才有"逝者如斯夫！不舍昼夜。"</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">逝</span>"是"誓"的通假字，"<span class="highlight">逝者</span>"就是"誓者"，就是决心开始"见、学、行""圣人之道"的君子。君子"见、学、行""圣人之道"的开始，就如同每条河的源头，最终都有一个共同的目标，就像大河东流归于大海，这个目标就是成就"圣人之道"，成就一个"<span class="highlight">不愠的世界</span>"。</p>
+                        </div>
+
+                        <p>"<span class="highlight">昼夜</span>"，就是"朝闻道夕死，可矣"中的"朝夕"，必须从"天地人"三方面来理解。"<span class="highlight">舍</span>"，去声，"止息"的意思；"不舍"，不止息，也就是"<span class="highlight">不退转</span>"的意思。</p>
+
+                        <p>这种用法在《诗经》里就有："逝将去女，适彼乐土"，其中"逝"就是"誓"的通假。以前的人解释《论语》，都是一章章分裂开来，所以被"川"字一迷惑，当然就会把"逝"解释成"流逝"之类的意思。但只要真正理解《论语》的精神，就明白，这话是和儒家强调的阳刚精神相一致的。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"川"之正解</div>
+                                <div class="word-meaning">河的源头，"闻圣人之道"的开始</div>
+                                <div class="word-explanation">"川"指代"承担""见、学、行""圣人之道"的开始、源头。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"逝者"正解</div>
+                                <div class="word-meaning">"誓者"，决心行圣人之道的君子</div>
+                                <div class="word-explanation">"逝"是"誓"的通假。君子从"闻其道"的源头开始，后浪推前浪，生生不息、前赴后继。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"不舍"正解</div>
+                                <div class="word-meaning">不止息，不退转</div>
+                                <div class="word-explanation">无论任何时候、任何地方，无论条件恶劣还是优越，甚至出生入死，都要不断地"固守"，"承担""圣人之道"之行直到最终成就"不愠的世界"而不退转。</div>
+                            </div>
+                        </div>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">逝者如斯夫，不舍昼夜</span>"就是"与天其时而天与其时"、"与地其利时而地与其利"、"与人其和而人与其和"，这里的"逝者"就是立志行"圣人之道"的君子，最终要成就真正的"人和"。</p>
+                        </div>
+
+                        <p>这里必须明确，这话既是孔子自己的感慨，也是对所有有志于圣人之道的人的忠告和勉励。这种感慨并不是孔子一人所独有，所谓同声同气，有此心，必有此感。这，<span class="highlight">超越时间，所谓万古同一情怀矣</span>。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p>"<strong>子在川上曰：逝者如斯夫，不舍昼夜。</strong>"</p>
+                            <p style="margin-top:10px;">孔子在河流的源头，抚今追昔、满怀感慨，自告且忠告所有决心开始"见、学、行""圣人之道"的君子：</p>
+                            <p style="text-indent:2em; margin-top:10px;">一、"<span class="highlight">逝者</span>"——誓者，决心行圣人之道的君子；</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">如斯夫</span>"——如同河流，从源头后浪推前浪，生生不息；</p>
+                            <p style="text-indent:2em;">三、"<span class="highlight">不舍昼夜</span>"——不退转，无论何时何地都"固守"、"承担"圣人之道。</p>
+                            <p style="margin-top:15px;">这<span class="highlight">超越时间，万古同一情怀</span>。有此心，必有此感。没有此万古同一情怀之章句蠹虫，没资格讨论《论语》！</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第五章：人能弘道 -->
+            <div id="chapter5" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>人能弘道</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：人能弘道，非道弘人。</div>
+                    <div class="sentence-origin">—— 《论语》· 卫灵公篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                人的才能可以使道发扬光大，不是道能使人的才能光大。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                人能发扬光大道，不是道来发扬光大人。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                人能使道扩充，道不能使人扩充。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这个简单的句子，却厘定着《论语》、儒家对"<span class="highlight">人</span>"与"<span class="highlight">道</span>"关系的基本看法。"<span class="highlight">弘</span>"，"使~光大"。"人能弘道，非道弘人"，"人能使道光大，而不是道能使人光大。"</p>
+
+                        <p>有一个很坏的传统，总把"道"往虚无缥缈中寻去。这种把戏，千百年来一直愚弄着偷心不死之人。而对于《论语》、对于儒家，这种把戏是无效的。儒家从来都是现世的，无论这"道"是何道，最终都要落实到"<span class="highlight">人的承担</span>"上。</p>
+
+                        <div class="key-quote">
+                            <p>还有一种更坏的传统，就是以"道"压"人"，把"道"描绘成一个虚无缥缈的远景，然后让现实的"人"为这个虚无缥缈的远景垫背。这，比起"一将功成万骨枯"还要残忍。</p>
+                        </div>
+
+                        <p>但比起下面这种，以上两种就不算什么了。历史上永远不缺这种人，他们以"得道者"、"行道者"自居，以"道"的代表自居，他们成了人间的上帝，他们制定人间的法律，一切违背他们的就成了大逆不道。而"<span class="highlight">道</span>"，是大道，是公道，不是哪个人、哪群人的小道、私道。只有"<span class="highlight">人</span>"，才能使"道"得以光大，离开了"人"，并没有一个"道"可以让"人"得以光大。</p>
+
+                        <p>"道"的彰显，是"人"现世存在的当下涌现，离开当下、现世，只能是虚无缥缈的远景，与《论语》、儒家的"圣人之道"毫无瓜葛。这里，我们更清楚地看到《论语》、儒家和西学中的柏拉图、耶教、科学主义等的根本分歧：</p>
+
+                        <p>• 对于柏拉图：是"道能弘人"，"道"是理智的光芒</p>
+                        <p>• 对于耶教：是"道能弘人"，"道"是上帝</p>
+                        <p>• 对于科学主义：是"道能弘人"，"道"是科学</p>
+                        <p>• 对于《论语》、儒家：是"<span class="highlight">人能弘道</span>"——理智的光辉、上帝、科学都离不开"人"，没有"人"，这些所谓的"道"都没有任何的意义</p>
+
+                        <p>正由于《论语》、儒家的这种精神，使得西式的宗教在中国从来都没能得到光大。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"人能弘道"</div>
+                                <div class="word-meaning">人能使道光大</div>
+                                <div class="word-explanation">"道"的彰显是"人"现世存在的当下涌现，离开当下、现世只能是虚无缥缈的远景。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"非道弘人"</div>
+                                <div class="word-meaning">道不能使人光大</div>
+                                <div class="word-explanation">"道"不是目的，"人"才是目的。任何以虚无缥缈的所谓"道"为目的、以现实的"人"为手段的，都与《论语》背道而驰。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"人"的两种含义</div>
+                                <div class="word-meaning">君子与人不知者</div>
+                                <div class="word-explanation">"人"包括：正"闻、见、学、行""圣人之道"的君子，和暂时不能的"人不知"的人。这两种人构成所有人。</div>
+                            </div>
+                        </div>
+
+                        <p>人被无所本地抛掷在此世间，就是人的当下，就是人的承担，这构成了人的无所位次，而人"<span class="highlight">无所位而生其本、无所本而生其位</span>"，才有这人类社会的存在发展。这里没有所谓的悲剧、喜剧、正剧，没有人，无所谓天地，也无所谓人展现的舞台，又何来悲剧、喜剧、正剧？</p>
+
+                        <p>悲剧、喜剧、正剧都不过是人生"无所位而生其本、无所本而生其位"而来的位次展现，这里所谓理智、情感的预设，没有人，又何来理智、情感？这里只有承担，<span class="highlight">人的承担，首先是对"人"的承担</span>。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p>"<strong>人能弘道，非道弘人</strong>"，厘定了儒家对"人"与"道"关系的基本看法：</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">道</span>"是"<span class="highlight">人</span>"的道，道为人本；</p>
+                            <p style="text-indent:2em;">二、只有"<span class="highlight">人</span>"才能使"道"光大，离开了"人"，没有"道"可以让"人"光大；</p>
+                            <p style="text-indent:2em;">三、"道"是手段，"人"是目的——"道"是"人"行的，而非"人"是"道"行的。</p>
+                            <p style="margin-top:15px;">承担，就是《论语》、也是儒学的真精神。<span class="highlight">人，天地之心；天地，人之躯壳</span>。一人成大，一人就成其天地之大。没有这种胸襟，没有这种浩然，没资格谈论儒家，没资格谈论《论语》。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第六章：攻乎异端 -->
+            <div id="chapter6" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>攻乎异端</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：攻乎异端，斯害也己。</div>
+                    <div class="sentence-origin">—— 《论语》· 为政篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                批判那些不正确的议论，祸害就可以消灭了。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                攻读于异端，那是有害的。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                打击不同的意见、言论，那倒是很可怕的坏事。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>千古以来，对这句话的解释是乱七八糟、莫衷一是。关键在于"攻"和"异端"两字的理解上。</p>
+
+                        <p>何为"攻"？"<span class="highlight">攻</span>"，古文"<span class="highlight">治</span>"之意。《说文解字》："<span class="highlight">攻，击也</span>"，但古文多以"攻"为"治"。如《国语》："莫质其事，而修其攻。"这里的"攻"就是"治"的意思。</p>
+
+                        <p>何为"异端"？"<span class="highlight">异端</span>"，不是"不同的意见"，而是"<span class="highlight">两端</span>"之一端。"<span class="highlight">端</span>"，开始、事物的一头、一部分。"<span class="highlight">两端</span>"，就是"始"与"终"、"本"与"末"、"<span class="highlight">天</span>"与"<span class="highlight">人</span>"。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">攻乎异端</span>"，就是"<span class="highlight">治乎异端</span>"——研究那不是"两端"的东西。"<span class="highlight">斯害也已</span>"——这才是真正的祸害啊！</p>
+                        </div>
+
+                        <p>真正的祸害，不是去研究"异端"，而是"攻乎异端"——把不是"两端"的东西当成"两端"来研究，把末当成本、把终当成始，如此才是真正的祸害。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"攻"之正解</div>
+                                <div class="word-meaning">本义"攻击、攻打"</div>
+                                <div class="word-explanation">"攻乎异端"就是"攻打、攻击非圣人之道的别为一端者"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"异端"正解</div>
+                                <div class="word-meaning">"别为一端"、非圣人之道</div>
+                                <div class="word-explanation">"异端"是"别为一端行非圣人之道"的"不知"者。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"斯害也已"</div>
+                                <div class="word-meaning">这是对行"圣人之道"的损害</div>
+                                <div class="word-explanation">对"异端"采取攻打、攻击手段，是对行"圣人之道"的损害。</div>
+                            </div>
+                        </div>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">攻乎异端</span>"——<strong>攻打、攻击"别为一端行非圣人之道"的"不知"者</strong>。"<span class="highlight">斯害也已</span>"——这是对行"圣人之道"的损害呀！</p>
+                        </div>
+
+                        <p>对于行"圣人之道"的君子，"异端"只不过是需要被<span class="highlight">转化</span>而非<span class="highlight">消灭</span>的对象。</p>
+
+                        <p><strong>煮饭的比喻</strong>："不知"，如同米；"不愠"，如同饭；"圣人之道"，如同水、火；行"圣人之道"，如同利用水、火把米煮成"饭"；行"圣人之道"的君子，就是那煮饭的人。</p>
+
+                        <p>没有了米，没有了"不知"，没有了"不知"者，巧妇难为无米之炊，又如何行"圣人之道"呢？</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"攻乎异端，斯害也已"</strong>——对"别为一端行非圣人之道"的"不知"者，<span class="highlight">不能采取攻打、攻击的手段消灭他们</span>。</p>
+                            <p style="margin-top:10px;">对于"异端"，行"圣人之道"的君子不是要攻打他们、消灭他们，而是要<span class="highlight">把他们从"不知"者变成"不愠"者</span>，把"不知"的世界变成"不愠"的世界。只有这样，才算是真行"圣人之道"。</p>
+                            <p style="margin-top:10px;">这与"和而不同"的儒家精神一脉相承——君子要用教化而非武力来改变世界。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第七章：道不同不相为谋 -->
+            <div id="chapter7" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>道不同，不相为谋</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：道，不同、不相为谋。</div>
+                    <div class="sentence-origin">—— 《论语》· 卫灵公篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                主张不同，不互相商量。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                道不同的人，不必互相商量。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                道不同，用不着互相商量。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>通常的断句是"<span class="highlight">道不同，不相为谋</span>"，这个断句是错误的。正确的断句应该是<span class="highlight">"道，不同、不相为谋"</span>。</p>
+
+                        <p>何为"不同"？"<span class="highlight">不同</span>"，不是"不一样"，而是"<span class="highlight">会同</span>"、"<span class="highlight">和同</span>"的反面。《中庸》："<span class="highlight">和者，天下之达道也</span>"。"不同"就是"不和"，就是"不同道"。</p>
+
+                        <p>何为"不相"？"<span class="highlight">相</span>"，不是"互相"，而是"<span class="highlight">看视</span>"的意思。"<span class="highlight">不相</span>"，就是"不看视、不去看、不相视"。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">道，不同、不相为谋</span>"——<span class="highlight">道，是"不同"的、"不相"的，不以此来谋</span>。</p>
+                        </div>
+
+                        <p>这是承接上一章"攻乎异端"的进一步论述。上一章说了"攻乎异端"的祸害，这一章进一步指出：<span class="highlight">真正的"道"，是超越"相同"与"不同"、"相"与"不相"的</span>。</p>
+
+                        <p>不是"道不同所以不相为谋"，而是"<span class="highlight">道，是不同、不相的，不能以'相同'、'相谋'来衡量</span>"。道家讲"道可道，非常道"，儒家同样如此——真正的道，是超越一切相对概念的。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"相"之正解</div>
+                                <div class="word-meaning">去声，本义"观察"，引申为"选择"</div>
+                                <div class="word-explanation">"不相"就是"不选择"。最常见的以"相"相之就是"以貌取人"，根据思想、观点、意识形态、经济水平等都是"以相相之"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"不同"正解</div>
+                                <div class="word-meaning">"异"</div>
+                                <div class="word-explanation">对"异"不能攻击、不能谋求消灭"异"，否则就不能"不同"，就和"圣人之道"相违了。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"不相"正解</div>
+                                <div class="word-meaning">不以"相"相之</div>
+                                <div class="word-explanation">所有选择都有假设的标准，只有"不相"才可能"不同"。</div>
+                            </div>
+                        </div>
+
+                        <div class="key-quote">
+                            <p><strong>道，圣人之道，如同大河，大河是不会去"选择"的、也不会去强迫"一致"，是"不相"、"不同"的。</strong></p>
+                        </div>
+
+                        <p><strong>"不同"和"不相"的辩证关系：</strong></p>
+                        <p>• "<span class="highlight">不同</span>"是"<span class="highlight">不相</span>"的实现</p>
+                        <p>• "<span class="highlight">不相</span>"是"<span class="highlight">不同</span>"的前提</p>
+                        <p>• 只有"不相"，才可能"不同"；只有终于能达到"不同"，"不相"才有意义</p>
+
+                        <p><strong>"大同"的真义：</strong></p>
+                        <p>真正的"大同"，不是"同而大同"，而是"<span class="highlight">不同而大同</span>"。"大同"的关键不是"同"，而是"<span class="highlight">大</span>"——包罗万有，如"天地"般。无其"大"，就无其"不同"；无其"不同"，就无其"大同"。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"道，不同、不相为谋。"</strong>确立了行"圣人之道"的君子<span class="highlight">谋道的最高原则</span>：不同、不相。</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"不同"</span>——对"异"不能攻击、不能谋求消灭；</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"不相"</span>——对不同个体、团体，不能用权威、独断的方式以"相"相之。</p>
+                            <p style="margin-top:15px;">必须注意的是，"不相"不是指个体对自己的行为、思想不加选择，而是指对他人不能用某种标准强求一致。</p>
+                            <p style="margin-top:10px;">与本章相关的还有：<span class="highlight">"君子和而不同"</span>（对应"不同"）、<span class="highlight">"有教无类"</span>（对应"不相"）。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第八章：有教无类 -->
+            <div id="chapter8" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>有教无类</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：有教无类。</div>
+                    <div class="sentence-origin">—— 《论语》· 卫灵公篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                人人都可以接受教育，没有区别。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                人人我都教，没有区别。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                教育面前人人平等，因材施教。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>通常的解释把"教"当成"教育"，把"类"当成"种类、类别"，这就成了"人人都有受教育的权利"，完全偏离了原意。</p>
+
+                        <p>关键在于"<span class="highlight">教</span>"字。何为"教"？"<span class="highlight">教</span>"，去声，读jiào，不是名词的"教育"，而是动词"<span class="highlight">政教、教化</span>"之意。《说文解字》："<span class="highlight">教，上所施，下所效也</span>"。"教"，是上层建筑领域，包括政治、法律、文化、意识形态等。</p>
+
+                        <p>关键在于"<span class="highlight">无类</span>"。何为"无类"？"无类"就是"<span class="highlight">不相</span>"——不以"相"相之。"相"，去声，读xiàng，本义"观察"，引申为"用某种标准去选择、判断"。"不相"，就是<span class="highlight">超越一切分别相</span>，不对人进行贫富、贵贱、智愚等分类。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">有教无类</span>"——<strong>在"政教、教化"的范畴内，是"不相"的、是超越一切分别相的。</strong></p>
+                        </div>
+
+                        <p>这是承接上一章"道，不同、不相为谋"而来。"不相"是行"圣人之道"的原则，而"有教无类"正是这一原则在上层建筑领域的体现。政治、法律、文化、意识形态的"教化"，必须是"<span class="highlight">无类</span>"的——不对人进行任何形式的分类、歧视。</p>
+
+                        <p>有人或许会问：对"异端"不也要"不相"吗？但"有教无类"不是说对所有事物无差别，而是说在"上层建筑"领域内，要以"不相"为原则。行"圣人之道"的君子，对破坏"不相"原则的"相"者，当然要"<span class="highlight">相而相之</span>"。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"有教"正解</div>
+                                <div class="word-meaning">去声jiào，政教、教化</div>
+                                <div class="word-explanation">"教"是上层建筑领域，包括政治、法律、文化、意识形态。不单指狭义的教育。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"无类"正解</div>
+                                <div class="word-meaning">"不相"</div>
+                                <div class="word-explanation">"无类"就是"不相"，不以"相"相之，超越一切分别相。这是"圣人之道"在上层建筑领域的体现。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"有教无类"</strong>是"道，不同、不相为谋"在<span class="highlight">上层建筑</span>领域的具体体现：</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">有教</span>"——上层建筑领域的政教、教化；</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">无类</span>"——"不相"，不对人进行贫富、贵贱、智愚等分别；</p>
+                            <p style="text-indent:2em;">三、只有"不相"，才能真正行"圣人之道"。</p>
+                            <p style="margin-top:15px;">这就是"闻、见、学、行"圣人之道在上层建筑领域的根本原则。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第九章：士志於道 -->
+            <div id="chapter9" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>士志於道</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：士志於道，而耻恶衣恶食者，未足与议也！</div>
+                    <div class="sentence-origin">—— 《论语》· 里仁篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                读书人如果立志要在道上，却又以穿旧衣服吃粗糙饭为羞耻，那就不值得和他谈论了。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                君子立志追求道，却以穿不好吃不好为耻辱，这种人就不值得和他讨论道了。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                知识分子有志于道，却以穿坏衣服吃坏饭为可耻，那就不值得和他谈论什么了。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>千古以来，对这句话的理解都是错误的。通常的解释是：如果一个人声称自己志于道，却还以穿破衣服、吃粗饭为羞耻，那这种人就<span class="highlight">不值得和他讨论道</span>。</p>
+
+                        <p>这种解释把"耻恶衣恶食者"当成"士"自己，这就完全错了。</p>
+
+                        <p>关键在于理解"<span class="highlight">耻</span>"字。谁"耻"？"<span class="highlight">耻恶衣恶食者</span>"，是"志於道之士"所"耻"的人。也就是说，<span class="highlight">志於道之士耻笑、鄙视那些以恶衣恶食为羞耻的人</span>。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">士志於道，而耻恶衣恶食者，未足与议也！</span>"——<strong>志於道之士，却以"恶衣恶食者"为可耻，这种人是不值得讨论的！</strong></p>
+                        </div>
+
+                        <p>为什么？因为"恶衣恶食者"是<span class="highlight">以外在之物为标准进行分别</span>的人。这种人根据贫富、贵贱、衣食之美恶来评判人——这就是"以相相之"，是"不相"的反面。</p>
+
+                        <p>真正的"志於道之士"，不会以物质财富来评判人。他既不会因为自己贫穷而羞耻，也不会因为别人贫穷而鄙视。他"<span class="highlight">不以恶衣恶食为耻</span>"，也不会"<span class="highlight">以恶衣恶食者</span>"为可耻。</p>
+
+                        <p>问题出在"未足与议也"——谁"未足与议"？是"志於道之士"对"以恶衣恶食为羞耻的人"说"未足与议"吗？不是的！是"志於道之士"如果<span class="highlight">自己也以恶衣恶食为羞耻</span>，那这种人"未足与议"——他根本没有资格讨论圣人之道。</p>
+
+                        <p>也就是说：</p>
+                        <p>• 如果"志於道之士"以"恶衣恶食者"为可耻——这种人"未足与议"</p>
+                        <p>• 如果"志於道之士"自己以"恶衣恶食"为羞耻——这种人也"未足与议"</p>
+
+                        <p>关键在于：无论是"自己以恶衣恶食为羞耻"，还是"以恶衣恶食者為可耻"，都是"<span class="highlight">以相相之</span>"，都是"<span class="highlight">不相</span>"的反面，都不是真正的"志於道"。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"士"正解</div>
+                                <div class="word-meaning">志於道者</div>
+                                <div class="word-explanation">"士"是立志"闻、见、学、行"圣人之道的人，不是"知识分子"的意思。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"耻恶衣恶食者"正解</div>
+                                <div class="word-meaning">"以恶衣恶食为可耻的人"</div>
+                                <div class="word-explanation">"志於道之士"所"耻"的是这种人——以贫富、贵贱、物质来评判人的"以相相之"者。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"未足与议"正解</div>
+                                <div class="word-meaning">不值得讨论</div>
+                                <div class="word-explanation">"以相相之"者，"不相"者，没有资格讨论圣人之道。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"士志於道，而耻恶衣恶食者，未足与议也！"</strong>揭示了"<span class="highlight">相</span>"的危害：</p>
+                            <p style="margin-top:10px;">一、志於道之士，不能"<span class="highlight">以相相之</span>"——不能以贫富、贵贱、物质来评判人；</p>
+                            <p style="text-indent:2em;">二、真正的"志於道"，是"<span class="highlight">不相</span>"——超越一切分别相；</p>
+                            <p style="text-indent:2em;">三、无论"以恶衣恶食为羞耻"，还是"以恶衣恶食者為可耻"，都是"以相相之"，都不配讨论圣人之道。</p>
+                            <p style="margin-top:15px;">这就是"闻、见、学、行"圣人之道在日常修为上的根本原则。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十章：贤哉回也 -->
+            <div id="chapter10" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>贤哉回也</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">贤哉，回也！一箪食，一瓢饮，在陋巷，人不堪其忧，回也不改其乐。贤哉，回也！</div>
+                    <div class="sentence-origin">—— 《论语》· 雍也篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                颜回真是贤德啊！一竹篮饭，一瓜瓢水，住在小巷子里，别人都受不了那种穷苦的忧愁，颜回却不改变他的快乐。真是贤德啊，颜回！（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                颜回真是贤啊！一篮饭，一瓜瓢水，住在小巷子里，别人受不了那忧苦，颜回却不改他的乐趣。贤啊，颜回！（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                颜回真好啊！一小筐饭，一瓜瓢水，住在小巷子里，别人都受不了那忧愁，颜回却仍然快乐。颜回真好啊！（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这是《论语》中最著名的章节之一，也是对颜回的经典赞誉。但如何理解颜回之"乐"，却是理解儒家"圣人之道"的关键。</p>
+
+                        <p>关键在于理解"<span class="highlight">不改其乐</span>"。颜回之"乐"，不是"以苦为乐"的自我欺骗，也不是"安贫乐道"的道德说教，而是<span class="highlight">真正超越"相"</span>的呈现。</p>
+
+                        <div class="key-quote">
+                            <p>颜回之"乐"，是因为他<span class="highlight">自然地"不相"</span>——不是刻意地超越贫富、贵贱，而是<span class="highlight">本能地超越</span>，根本不需要去"超越"什么。</p>
+                        </div>
+
+                        <p>这与上一章"士志於道，而耻恶衣恶食者，未足与议也"一脉相承。那些"以恶衣恶食为羞耻"的人、"以恶衣恶食者"为可耻的人，都是"以相相之"者，都是<span class="highlight">没有超越"相"</span>的人。</p>
+
+                        <p>而颜回，是<span class="highlight">真正超越"相"</span>的典范。他的"一箪食，一瓢饮，在陋巷"，不是"刻意贫穷"，也不是"故作清高"，而是<span class="highlight">自然地"不相"</span>。他根本不需要去"安贫乐道"，因为他已经<span class="highlight">超越了贫富的分别相</span>。</p>
+
+                        <p>这就是"贤"的真正含义。"贤"，就是"<span class="highlight">不相</span>"——不是刻意"不相"，而是<span class="highlight">自然地"不相"</span>。颜回之所以"贤"，不是因为他能忍受贫穷，而是因为他<span class="highlight">根本没有"贫"的分别相</span>。</p>
+
+                        <p>"<span class="highlight">人不堪其忧</span>"——别人都受不了这种穷苦的忧愁。"<span class="highlight">回也不改其乐</span>"——颜回的快乐不改变。这是因为颜回的快乐根本不在"箪食瓢饮"、"陋巷"这些"相"上，而在<span class="highlight">"不愠"</span>——内心的圆满自足。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"贤"正解</div>
+                                <div class="word-meaning">"不相"</div>
+                                <div class="word-explanation">"贤"不是一般的"好"或"能干"，而是能超越贫富、贵贱、物类分别的"不相"状态。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"不改其乐"正解</div>
+                                <div class="word-meaning">自然超越贫富之相</div>
+                                <div class="word-explanation">颜回的快乐不在"箪食瓢饮"、"陋巷"这些"相"上，而在"不愠"——内心的圆满自足。他不是"以苦为乐"，而是根本超越了一切"相"的分别。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">本章深义</div>
+                                <div class="word-meaning">"不相"的最高境界</div>
+                                <div class="word-explanation">颜回是"志於道"之"士"的典范，是"不相"的最高境界。他的"不改其乐"，证明了人确实可以超越"相"的束缚，自然地"不相"。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"贤哉，回也！"</strong>揭示了儒家"<span class="highlight">不相</span>"的<span class="highlight">最高境界</span>：</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">贤</span>"就是"不相"——超越一切分别相；</p>
+                            <p style="text-indent:2em;">二、颜回的"不改其乐"，是<span class="highlight">自然地"不相"</span>，不是刻意"不相"；</p>
+                            <p style="text-indent:2em;">三、真正的快乐，来自<span class="highlight">"不愠"</span>，来自内心的圆满自足，<span class="highlight">与贫富无关</span>。</p>
+                            <p style="margin-top:15px;">"<span class="highlight">人不堪其忧，回也不改其乐</span>"——这就是儒家的真精神，这就是"闻、见、学、行"圣人之道的最高境界。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十一章：贫而无怨难 -->
+            <div id="chapter11" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>贫而无怨难</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：贫而无怨难；富而无骄易。</div>
+                    <div class="sentence-origin">—— 《论语》· 宪问篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                贫穷却没有怨恨，很难；富贵却不骄傲，倒容易。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                贫穷而没有怨恨，很难；富贵而不骄傲，倒容易。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                贫困而无抱怨很难；富裕而不骄傲容易。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>自古以来，这句话的断句和解释都是错误的。通常把"难"当成平声，断为"<span class="highlight">贫而无怨，难；富而无骄，易。</span>"这种解释连废话都算不上，只能是瞎话。</p>
+
+                        <p>正确的断句应该是：<span class="highlight">"贫而无怨难；富而无骄易。"</span>关键在于"难"和"易"的理解。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"难"之正解</div>
+                                <div class="word-meaning">去声，"敌对、造反、灾难"之意</div>
+                                <div class="word-explanation">因"怨"而有"仇"而"敌对"甚至"造反"，这不是"灾难"是什么？</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"怨"之正解</div>
+                                <div class="word-meaning">程度浅为"埋怨"，程度深为"怨恨"，最终成"仇人"</div>
+                                <div class="word-explanation">因"怨"生"难"——产生敌对、造反、灾难。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"骄"之正解</div>
+                                <div class="word-meaning">本义"健壮"，引申为骄傲、傲慢、骄横、强烈</div>
+                                <div class="word-explanation">富人自以为"健壮"，因此"骄傲"进而"傲慢"甚至"骄横"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"易"之正解</div>
+                                <div class="word-meaning">本义"赐给"，引申为交换、轻视、怠慢、蔓延</div>
+                                <div class="word-explanation">富人自以为"富"是上天"赐给"或天赋、努力"交换"来的，产生"轻视、怠慢"，最终在社会上"蔓延"。</div>
+                            </div>
+                        </div>
+
+                        <p>"<span class="highlight">贫</span>"和"<span class="highlight">富</span>"在任何现实社会中都会存在，而且关系到每一个人。但"贫富"不单指财富，还包括<span class="highlight">学识、权力、权利</span>等方面的广义"贫富"。只要不平等，就面临"贫富"问题，这是无可逃避的。</p>
+
+                        <p>"<span class="highlight">不相</span>"是本章的核心概念。"不相"是"<span class="highlight">相而不相</span>"，不以"相"相之。首先不能否认"相"的存在，正因为有"相"，才需要"不相"。真正的"不相"，就是直面"贫富"之相的存在，用社会经济、政治、法律、文化等手段，<span class="highlight">不以"贫富"之相相之</span>。</p>
+
+                        <div class="key-quote">
+                            <p>君子行"圣人之道"，把"人不知"的世界变成"人不愠"的世界，首要面对的就是如何把"贫富"之"相" "不相"之，要让"<span class="highlight">贫而无怨难；富而无骄易</span>"。</p>
+                        </div>
+
+                        <p>如何实现"不相"？</p>
+                        <p>• 采取公平、一视同仁之谋，"贫"或"富"都不是偏袒的理由</p>
+                        <p>• 对"<span class="highlight">为富不仁</span>"者坚决打击——以"富"为相，就要对之"不相"</p>
+                        <p>• 对"<span class="highlight">贫而自贱</span>"者要"富之贵之"——以"贫"为相，就要对之"不相"</p>
+                        <p>• 对"<span class="highlight">挟贫而贼</span>"者坚决打击——以"贫"为相，就要对之"不相"</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"贫而无怨难；富而无骄易"</strong>，是<span class="highlight">面对"贫富"的"不相"之谋</span>：</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">贫而无怨难</span>"——贫困者没有敌对、造反、灾难，是很难达到的状态；</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">富而无骄易</span>"——富贵者不骄傲、轻视、怠慢，是容易蔓延的状态。</p>
+                            <p style="margin-top:15px;">君子用各种现实的经济、政治、法律、文化手段，让"<span class="highlight">贫而无怨难、富而无骄易</span>"成为现实，这就是"不相"。必须<span class="highlight">在广义的"贫富"上</span>成就"不相"，才能真正地"不相"。否则只能是"城头变换大王旗"，换汤不换药。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十二章：贫而乐富而好礼 -->
+            <div id="chapter12" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>贫而乐，富而好礼</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子贡曰："贫而无谄，富而无骄，何如？"<br>子曰："可也；未若贫而乐，富而好礼者也。"</div>
+                    <div class="sentence-origin">—— 《论语》· 学而篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                贫困却不谄媚，富有却不骄傲，怎么样？孔子说：可以了；但还不如贫困而乐于道，富有而崇尚礼节。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                贫困者不谄媚，富有者不骄傲，可算好了。但不如贫困而能乐道，富有而能好礼。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                贫穷却不谄媚，富有却不骄傲，怎么样？孔子说：可以了；但不如贫而乐道，富而遵守礼节。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>上一章说明了必须通过对"贫富"的"不相"，达到"贫而无怨难；富而无骄易"这样一个"人不相"的社会。但这种"人不相"的社会只是一个中间环节，行"圣人之道"，最终要实现的是"<span class="highlight">人不愠</span>"的大同。</p>
+
+                        <p><strong>一、三种社会形态</strong></p>
+                        <p>用"贫富"对社会形态进行分类，可以得出三种基本的社会形态：</p>
+                        <p>• "<span class="highlight">贫而谄，富而骄</span>"——对应"人不知"的社会</p>
+                        <p>• "<span class="highlight">贫而无谄，富而无骄</span>"——对应"人不相"的社会</p>
+                        <p>• "<span class="highlight">贫而乐，富而好礼</span>"——对应"人不愠"的大同社会</p>
+
+                        <p>行"圣人之道"，就是要把"人不知"的社会，通过"人不相"的中间环节，最终达到"人不愠"的大同社会。</p>
+
+                        <div class="key-quote">
+                            <p>子贡问到"贫而无谄，富而无骄"，孔子回答"可也"——这种"人不相"社会是可以的，已经不错了，但还不是最理想的状态。对于儒家来说，最理想的社会就是"<span class="highlight">贫而乐，富而好礼</span>"的"人不愠"大同社会。</p>
+                        </div>
+
+                        <p><strong>二、"谄"与"骄"的深意</strong></p>
+                        <p>"谄"就是"奉承"，不光指语言，还包括一切行为。为什么要"奉承"？就因为是弱者而有所求。在"贫而谄，富而骄"的"人不知"社会，这种"贫而谄"无所不在。</p>
+                        <p>"骄"，因强大而骄横。像美国，就是国家"富而骄"的典型。</p>
+                        <p>"贫而谄"不得，最终就会"贫而怨难"，因"怨"有"仇"而"敌对"甚至"造反"，但"造反"成功的马上又成为"富而骄"，又有新的"贫而谄"，结果不断循环，都逃不出这个"贫而谄，富而骄"的"人不知"社会。</p>
+
+                        <p><strong>三、"贫而乐，富而好礼"的深义</strong></p>
+                        <p><span class="highlight">"乐"</span>，读yue，歌舞升平。连"贫"者弱者都能歌舞升平，而只有"不愠"才可能歌舞升平，连"贫"者都能"不愠"，这才是真正的"人不愠"，这才是"大同"。</p>
+                        <p>"礼乐"并举，并不是说"礼"归富者，"乐"归贫者，而是"互文"的修辞手法，无论贫富，都"乐"且好"礼"。</p>
+                        <p>人人歌舞升平，相互又以礼相待，这才可能"人不愠"。另外，人人歌舞升平，还指代人人有好的修养，都是具有高度修养的君子。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"谄"之正解</div>
+                                <div class="word-meaning">奉承，因弱有所求</div>
+                                <div class="word-explanation">在"人不知"社会，"贫而谄"无所不在，如下级对上级、打工对老板、小国对大国等。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"骄"之正解</div>
+                                <div class="word-meaning">因强大而骄横</div>
+                                <div class="word-explanation">"富而骄"者自以为"健壮"，因此"骄傲"进而"傲慢"甚至"骄横"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"贫而乐"正解</div>
+                                <div class="word-meaning">yue，歌舞升平</div>
+                                <div class="word-explanation">连"贫"者都能歌舞升平，只有"不愠"才可能，这才是真正的"人不愠"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"礼乐"并举</div>
+                                <div class="word-meaning">互文手法</div>
+                                <div class="word-explanation">无论贫富，都"乐"且好"礼"。人人歌舞升平，相互以礼相待。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"贫而乐，富而好礼"</strong>是<span class="highlight">"人不愠"的大同社会</span>：</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">贫而谄，富而骄</span>"——"人不知"的恶性循环</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">贫而无谄，富而无骄</span>"——"人不相"的中间环节</p>
+                            <p style="text-indent:2em;">三、"<span class="highlight">贫而乐，富而好礼</span>"——"人不愠"的大同社会</p>
+                            <p style="margin-top:15px;">儒家看穿了这个恶性循环，知道要打破这个循环，只有通过"人不相"而达到"人不愠"。<span class="highlight">"人不愠"的大同社会并不是要消灭一切差异</span>，而是在承认人与人差异的必然性前提下，让各种"贫富"之相能平等地存在，实现其"不同"，容纳各种"不同"而成其大，最终成就其"大同"。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十三章：齐一变至於鲁 -->
+            <div id="chapter13" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>齐一变，至於道</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：齐一变，至於鲁；鲁一变，至於道。</div>
+                    <div class="sentence-origin">—— 《论语》· 雍也篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                齐国一改变，可以达到鲁国的这个样子；鲁国一改变，就可以达到先王之道了。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                齐国一变可以至于鲁，鲁国一变就可以至于道了。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                齐国一变就达到鲁国的样子；鲁国一变就合于道了。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章是顺着上一章从"人不知"经"人不相"达"人不愠"的<span class="highlight">大道</span>而来的。</p>
+
+                        <p><strong>一、"齐式"国家模式：以恶制恶</strong></p>
+                        <p>"齐"，在孔子时代是强国，齐桓公以"霸术"而成"霸业"。"霸术"是以人之"恶"为前提的：对内以法制民、对外以武制敌，强调以暴制暴、以力制力、以恶制恶。这种类型的国家，自古以来从来不缺，是"<span class="highlight">人不知</span>"所必然导致的社会结构。</p>
+                        <p>"人不知"的世界，人之恶是一切行为的前提。恶只能引发恶，制恶以法只能是权宜之法，诱人以利只能生人以怨，只能使得"贫而谄，富而骄"的"人不知"状态愈发严重直至不可救药，然后玉石俱焚再死灰复燃地重新开始恶性循环。</p>
+
+                        <p><strong>二、"鲁式"国家模式：以善制恶</strong></p>
+                        <p>要打破恶性循环，"齐一变，至于鲁"，企图通过改变"齐式"模式，一变为"鲁式"国家模式。"鲁国"打着以"仁"以"德"治国的典型。相比"齐式"模式，这是一种进步。</p>
+                        <p>但在"人不知"的世界，以"善"为善、标榜其"善"，往往使得所谓的"善"成为<span class="highlight">伪善</span>，成为另一种"恶"。当这种假"仁"假"德"成为一种新的意识形态后，"贫而谄，富而骄"的局面依然会出现。</p>
+
+                        <div class="key-quote">
+                            <p>"鲁式"国家模式并不能打破恶性循环，依然只是"人不知"世界的一个变种。要打破恶性循环，必须"<span class="highlight">鲁一变，至于道</span>"——从"人不知"经"人不相"达"人不愠"，最终成就圣人之道。</p>
+                        </div>
+
+                        <p><strong>三、"道"的真义：善恶并举、文武并重</strong></p>
+                        <p>"人不知"的世界，以"善"不生为相，因此要对之"不相"，去掉"善"不生之相，从而<span class="highlight">扬其善</span>；"人不知"的世界，以"恶"不灭为相，因此要对之"不相"，去掉"恶"不灭之相，从而<span class="highlight">惩其恶</span>。</p>
+                        <p>不能如"齐式"模式那样光立其恶而惩其恶，也不能如"鲁式"模式那样光立其善而扬其善，必须<span class="highlight">善恶并举、文武并重</span>，所谓"一阴一阳、文武之道"，这是儒家的一贯立场。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"齐式"模式</div>
+                                <div class="word-meaning">以恶制恶</div>
+                                <div class="word-explanation">以法制民、以武制敌，是"人不知"的必然产物，形成"贫而谄，富而骄"的恶性循环。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"鲁式"模式</div>
+                                <div class="word-meaning">以善制恶</div>
+                                <div class="word-explanation">以"仁""德"治国，容易成为伪善，同样不能打破恶性循环。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"道"</div>
+                                <div class="word-meaning">善恶并举、文武并重</div>
+                                <div class="word-explanation">扬其善、惩其恶，"不相"其"贫富"诸相，才能打破恶性循环，达"人不愠"大同。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"齐一变，至于鲁；鲁一变，至于道"</strong>揭示了社会变革的三个阶段：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"齐式"</span>——以恶制恶的"人不知"社会</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"鲁式"</span>——以善制恶的变种，仍在恶性循环中</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">"道"</span>——善恶并举、文武并重，达"人不愠"大同</p>
+                            <p style="margin-top:15px;"><strong>儒家走的是刚猛路子，不是老好人，不能乡愿。</strong>必须把握"人不知"、"人不相"、"人不愠"的关系，才能真正理解《论语》的真精神。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十四章：放于利而行 -->
+            <div id="chapter14" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>放于利而行</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：放于利而行，多怨。</div>
+                    <div class="sentence-origin">—— 《论语》· 里仁篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                依据个人利益行事，便会招致很多怨恨。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                依据利益来行事，多会招致怨尤。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                依仗利益而行动，会招致很多怨恨。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章，七个字，没一个难字，但千古以来，都是错解。所有的解释，基本都按朱熹《论语集注》而来。朱熹认为"放"是"依"的意思。但试想，那杂说《吕氏春秋》都敢吹嘘"一字千金"，改一字都不行，又何况这中文第一书的《论语》呢？</p>
+
+                        <p><strong>一、"放"字正解：一字而有神</strong></p>
+                        <p>"<span class="highlight">放</span>"，应该发去声，包含"放弃"和"放纵"两个<span class="highlight">表面上相反</span>的意思。</p>
+                        <p>• "放弃"——不按"利"行事</p>
+                        <p>• "放纵"——惟利是图、放纵而行</p>
+                        <p>正是这"放"字包含了这表面上相反的两个意思，才使得这"放"字成为<span class="highlight">诗眼而不可更改</span>。这就像伯牙之"高山流水"，唯一可惜的是，千古以来，竟然罕有知音。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">放于利而行，多怨</span>"——<strong>无论放弃还是放纵"利"而行，都会产生"多怨"的结果。</strong></p>
+                        </div>
+
+                        <p><strong>二、计划经济与市场经济的教训</strong></p>
+                        <p>计划经济年代，都是放弃"利"而行，结果是"多怨"；市场经济年代，放纵"利"而行，结果还是"多怨"。</p>
+                        <p>这句话的合理与高明之处，从这两个时代的对比中，就不难发现了。更高明的是，这两种相反的情况，用一个"放"字就包含了。</p>
+
+                        <p><strong>三、对"利"的正确态度</strong></p>
+                        <p>"利"不单单指通常理解的"利益"，其本义是"<span class="highlight">锋利</span>"。"利"除了表现为静态的利益，也表现为一种动态趋势性。</p>
+                        <p>对"利"的放纵与放弃都是不对的，这和上一章"齐一变，至于鲁；鲁一变，至于道"的精神一致：</p>
+                        <p>• "齐"模式——对"利"的放纵</p>
+                        <p>• "鲁"模式——对"利"的放弃</p>
+                        <p>• "道"——善恶并举、文武并重，不放弃也不放纵</p>
+
+                        <p>要实现"贫而无谄，富而无骄"的"人不相"，绝对不能违背"放于利而行，多怨"这"人不知"社会的总规律。要充分把握其"利"，所谓<span class="highlight">用其刃而不被其刃所伤</span>。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"放"之正解</div>
+                                <div class="word-meaning">去声，包含"放弃"和"放纵"两个相反意思</div>
+                                <div class="word-explanation">"放弃"不能"放纵"，"放纵"就不"放弃"。一个"放"字包含两个极端，是诗眼而不可更改。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"利"之正解</div>
+                                <div class="word-meaning">本义"锋利"，引申为利益、动态趋势</div>
+                                <div class="word-explanation">"利"是"人不知"社会最锋利的东西，表现为静态利益和动态趋势性。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"多怨"</div>
+                                <div class="word-meaning">怨增加，社会矛盾激化</div>
+                                <div class="word-explanation">无论放弃还是放纵"利"，都会使"怨"增加，最终使社会矛盾激化。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"放于利而行，多怨"</strong>是<span class="highlight">"人不知"社会的总规律</span>：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">放弃"利"</span>而行——计划经济，"多怨"</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">放纵"利"</span>而行——市场经济，"多怨"</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">用其刃而不被其刃所伤</span>——善恶并举、文武并重</p>
+                            <p style="margin-top:15px;">行"圣人之道"的君子，首先要是"知人"。一事不知，儒者之耻，不尽量用这世界上的知识武装自己，是没资格当儒者的。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十五章：好勇疾贫乱也 -->
+            <div id="chapter15" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>好勇疾贫，乱也</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：好勇疾贫，乱也。人而不仁，疾之已甚，乱也。</div>
+                    <div class="sentence-origin">—— 《论语》· 泰伯篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                喜好勇敢而憎恨贫穷的人，就会作乱。对不仁的人痛恨太甚，也会出乱子。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                喜好勇力，而嫉恶贫弱，就要作乱。一个入不仁者，若对其痛疾过甚，也将激起变乱。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                喜好勇敢而怨恨贫穷，会出乱子。对不仁的人憎恨太过，也会出乱子。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章是上一章"放于利而行，多怨"的延伸。朱熹的解释把儒者当成耶教传教士，把"防祸"说成躲祸，这是<span class="highlight">腐儒之见</span>，由此而败坏儒家、《论语》、孔子。</p>
+
+                        <p><strong>一、两种乱相：贫者与富者</strong></p>
+                        <p>何谓"<span class="highlight">好勇疾贫</span>"？好于勇而疾于贫也。疾于贫，即"贫者"之相，其"贫"而好于勇，所谓好勇斗狠。</p>
+                        <p>何谓"<span class="highlight">人而不仁，疾之已甚</span>"？"已"，通假"以"；"甚"，"斟"的初文，本义是用勺舀酒等喝，引申为"过分享乐"。"疾"，病、得病、特指传染病。为富不仁之人被"过分享乐"之病急速传染，所谓纸醉金迷、醉生梦死。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">好勇疾贫，乱也。人而不仁，疾之已甚，乱也。</span>"说的是"人不知"社会中同时存在的两种乱相：</p>
+                            <p>• <span class="highlight">"贫者"</span>——好勇斗狠</p>
+                            <p>• <span class="highlight">"富者"</span>——为富不仁，纸醉金迷</p>
+                        </div>
+
+                        <p><strong>二、乱相的普遍性</strong></p>
+                        <p>"贫富"不单单指财富上的，只要有人参与其中的一切社会现象，都会有其"贫富"之相。例如：</p>
+                        <p>• 精英团体或个人有某种理想或特长</p>
+                        <p>• FANS们又具有特别狂热的情绪</p>
+                        <p>这就是典型的"好勇疾贫，乱也。人而不仁，疾之已甚，乱也。"</p>
+                        <p>这种乱相，无论何时何地，都是<span class="highlight">司空见惯</span>：偶像粉丝闹剧、名人对骂、纸醉金迷与好勇斗狠并存。</p>
+
+                        <p><strong>三、乱相的根源</strong></p>
+                        <p>为什么会这样？明白了"放于利而行，多怨"这"人不知"社会总规律，就知道：</p>
+                        <p>• "富者"因得其"利"而<span class="highlight">放纵无度</span></p>
+                        <p>• "贫者"因不得其"利"而<span class="highlight">不平</span></p>
+                        <p>• 当"利"的"贫富"之相严重对立形成的落差储备到了足够大势能后，懦夫也会成为"勇夫"</p>
+
+                        <p>这种图景在"人不知"的社会<span class="highlight">无处不在</span>，《论语》早在两千多年前就已总结出来了。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"好勇疾贫"</div>
+                                <div class="word-meaning">"贫者"好勇斗狠</div>
+                                <div class="word-explanation">"贫者"不安于贫，好于勇而疾于贫，表现为好勇斗狠、不平则鸣。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"疾之已甚"</div>
+                                <div class="word-meaning">"富者"被过分享乐之病急速传染</div>
+                                <div class="word-explanation">"已"通"以"，"甚"本义"斟"，引申为过分享乐。为富不仁，纸醉金迷、醉生梦死。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"乱"</div>
+                                <div class="word-meaning">乱相</div>
+                                <div class="word-explanation">"贫者"好勇斗狠与"富者"为富不仁并存，构成"人不知"社会的两种乱相。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"好勇疾贫，乱也。人而不仁，疾之已甚，乱也"</strong>揭示了"人不知"社会的两种乱相：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"贫者"之乱</span>——好勇斗狠，"利"之贫富对立</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"富者"之乱</span>——为富不仁，纸醉金迷</p>
+                            <p style="margin-top:15px;"><strong>腐儒之见</strong>把儒者当老好人，见到好勇斗狠、为富不仁的主都躲着走。但儒家走的是刚猛路子，"防祸"不是说躲祸，而是用其刃而不被其刃所伤，对"贫富"诸相"不相"，最终达"人不愠"大同。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十六章：善人为邦百年 -->
+            <div id="chapter16" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>善人为邦百年</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：善人为邦百年，亦可以胜残去杀矣。诚哉是言也！</div>
+                    <div class="sentence-origin">—— 《论语》· 子路篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                善人治理国家一百年，也就可以消除残暴免除杀戮了。这话真是不错啊！（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                善人治理国家，也可传到百年之久了。那时可以克服残暴免除杀戮了。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                善良的人治理国家一百年，也就可以消除残暴，免除杀死了。这话真对啊！（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章是接着上一章"好勇疾贫，乱也。人而不仁，疾之已甚，乱也。"来的。"乱"，在音乐和文学上是指乐曲的最后一章和辞赋的最后一段，引申为<span class="highlight">最后的乱相</span>，对于国家来说，这种最后的乱相就是<span class="highlight">亡国之相</span>。</p>
+
+                        <p><strong>一、千古错解</strong></p>
+                        <p>千古以来错解无数，最离谱的是把"善人"当成"好人"来解，"善人为邦百年"竟然解释成"好人为邦也要百年时间"。朱熹虽然知道"为邦百年，言相继而久也"，却把"去杀"解释为"民化于善，可以不用刑杀"，把"善人"和"胜残去杀"的<span class="highlight">语法并列关系</span>给完全搞混了。</p>
+
+                        <p><strong>二、语法结构正解</strong></p>
+                        <p>"亦可以胜残去杀矣"是"以胜残去杀亦可矣"的倒装。"善人为邦百年，亦可以胜残去杀矣"的意思就是：</p>
+                        <p>• "<span class="highlight">善人</span>"可"为邦百年"</p>
+                        <p>• "<span class="highlight">胜残去杀</span>"亦可"为邦百年"</p>
+                        <p>"胜残"、"去杀"、"善人"三个词的语法结构是一样的：</p>
+                        <p>• "残"、"杀"名词化</p>
+                        <p>• "善"动词化</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">胜残去杀</span>"——战胜残暴、制止杀戮；"<span class="highlight">善人</span>"——使人善。"亦"、"可"如两腋之于人，双翼之于鸟，钱币的两面。"善人"和"胜残去杀"，其并列是一体的。</p>
+                        </div>
+
+                        <p><strong>三、为邦百年六字箴言</strong></p>
+                        <p>孔子、《论语》明确提出了让国家长治久安的六字箴言"<span class="highlight">善人、胜残去杀</span>"：</p>
+                        <p>• "<span class="highlight">胜残去杀</span>"——针对"人而不仁，疾之已甚"，针对为富不仁的"富者"，包括贼王暴君、贪官污吏、奸商恶霸等。所谓杀一暴君而救亿万者乃真大仁矣。</p>
+                        <p>• "<span class="highlight">善人</span>"——针对"好勇疾贫"的"贫者"，改善他们的生存条件、扩展他们的生存空间、提高他们的生存能力。</p>
+
+                        <p><strong>四、相辅相成</strong></p>
+                        <p>这三组字是相互相成的：</p>
+                        <p>• 不可能光"胜残去杀"而不"善人"</p>
+                        <p>• 也不可能光"善人"而不"胜残去杀"</p>
+                        <p>对于"胜残去杀"来说，只有"胜残"才能"去杀"。所谓"庆父不死，鲁难未已"，<span class="highlight">不"胜残"不可能"去杀"</span>。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"善人"</div>
+                                <div class="word-meaning">动词，使...善</div>
+                                <div class="word-explanation">改善"贫者"的生存条件、扩展生存空间、提高生存能力。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"胜残"</div>
+                                <div class="word-meaning">战胜残暴</div>
+                                <div class="word-explanation">针对为富不仁的"富者"，包括贼王暴君、贪官污吏、奸商恶霸。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"去杀"</div>
+                                <div class="word-meaning">制止杀戮</div>
+                                <div class="word-explanation">只有"胜残"才能"去杀"，不"胜残"不可能"去杀"。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"善人为邦百年，亦可以胜残去杀矣。诚哉是言也！"</strong></p>
+                            <p style="margin-top:10px;">这一章揭示了让国家长治久安的<span class="highlight">六字箴言</span>：</p>
+                            <p style="text-indent:2em; margin-top:10px;">一、<span class="highlight">"善人"</span>——改善"贫者"条件</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"胜残"</span>——战胜为富不仁者</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">"去杀"</span>——制止杀戮，实现长治久安</p>
+                            <p style="margin-top:15px;">这三者相辅相成，不可能光"胜残去杀"而不"善人"，也不可能光"善人"而不"胜残去杀"。只有善恶并举、文武并重，才能"为邦百年"，让国家长治久安。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十七章：如有王者必世后仁 -->
+            <div id="chapter17" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>必有世而后仁</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：如有王者，必世而后仁。</div>
+                    <div class="sentence-origin">—— 《论语》· 子路篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                如果有王者兴起，一定需要三十年才能行仁政。（《论语译注》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                如有王者兴起，必隔三十年之后方能推行仁政。（《论语新解》）
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                如果有王者兴起，也必须经过一世才能实现仁政。（《论语今读》）
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章从上面的"齐一变，至于鲁"而来。千古以来没人能解释清楚，难点在于"<span class="highlight">世</span>"字上。</p>
+
+                        <p><strong>一、千古错解</strong></p>
+                        <p>基本上所有解释都把"世"解释成"三十年为一世"，大致意思成了"如果有称王的，一定要经过一世三十年，才能行其仁政"。由此引申出奇谈怪论：必须先法治再德治，先搞经济再搞道德。</p>
+                        <p>这类想法的潜台词就是，民对于王来说都是刁民，必须先折腾折腾，然后再给好果子吃。趁三十年河东时先把河东洗劫干净，积累经验下一世河西去继续洗劫。</p>
+
+                        <p><strong>二、"世"字正解</strong></p>
+                        <p>"<span class="highlight">世</span>"，世代相传，也就是秦始皇"一世到万世"的美梦。</p>
+                        <p>"<span class="highlight">王</span>"，王霸之术而成其王，行"齐"式手段得到政权，必定打好世代相传、一世到万世的基础后，才会行所谓"仁"术。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">如有王者，必世而后仁。</span>"——如果有称王的，必定打好世代相传的基础后，才会行"鲁式"假仁之政。这与儒家所认为的"仁"毫无关系。</p>
+                        </div>
+
+                        <p><strong>三、普遍规律</strong></p>
+                        <p>这种模式不仅在政治领域，在学术、经济、宗教等领域，<span class="highlight">无处不在</span>：</p>
+                        <p>• 例如美国，南北战争确立其国体的世代相传、一世到万世后，就开始行所谓的"民主、自由"之"仁"</p>
+                        <p>• 甚至在一个小公司、小办公室里，"如有王者，必世而后仁"难道还少见？</p>
+                        <p>"必世而后仁"只能是"人不知"世界恶性循环的一个<span class="highlight">固定低音</span>。</p>
+
+                        <p><strong>四、儒家的主旋律</strong></p>
+                        <p>儒家对"齐一变，至于鲁"，虽然认为有其进步的一面，但绝不会认同"鲁"式把戏，对"如有王者，必世而后仁"的假"仁"也是<span class="highlight">不屑</span>的。</p>
+                        <p>当然，就算是假"仁"，也比明目张胆的"残、杀"要好。而假的最终都要破的，秦始皇的万世美梦却只能事不过三地成了历史大笑话。</p>
+                        <p>儒家的主旋律是：</p>
+                        <p>• "<span class="highlight">善人为邦百年，亦可以胜残去杀矣</span>"</p>
+                        <p>• 善恶并举、文武并重</p>
+<p>• 扬其善、惩其恶、"不相"其"贫富"诸相</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"世"正解</div>
+                                <div class="word-meaning">世代相传，一世到万世</div>
+                                <div class="word-explanation">秦始皇的美梦，打好世代相传的基础后才行"仁"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"王"正解</div>
+                                <div class="word-meaning">王霸之术成其王</div>
+                                <div class="word-explanation">行"齐"式手段得到政权，行"鲁"式假仁之政，与儒家之"仁"无关。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"仁"正解</div>
+                                <div class="word-meaning">假仁，"鲁式"仁政</div>
+                                <div class="word-explanation">打着"仁""德"旗号的"鲁式"之"仁"，与《论语》、孔子毫无关系。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"如有王者，必世而后仁"</strong>揭示了"人不知"世界恶性循环的<span class="highlight">固定低音</span>：</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">世</span>"——世代相传，打好政权基础</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">王</span>"——王霸之术，行"齐"式手段</p>
+                            <p style="text-indent:2em;">三、"<span class="highlight">仁</span>"——假仁，"鲁式"把戏</p>
+                            <p style="margin-top:15px;"><strong>大哉儒者，岂区区贼王可比？</strong>儒家的主旋律是"善人、胜残去杀"，善恶并举、文武并重，最终达"人不愠"大同。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十八章：庶、富、教 -->
+            <div id="chapter18" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>庶、富、教</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子适卫，冉有仆。子曰："庶矣哉！"冉有曰："既庶矣，又何加焉？"曰："富之。"曰："既富矣，又何加焉？"曰："教之。"</div>
+                    <div class="sentence-origin">—— 《论语》· 子路篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                孔子到卫国，冉有驾车。孔子说："人多了啊！"冉有说："人多了，又该怎么做呢？"孔子说："使他们富起来。"冉有说："富了以后，又该怎么做呢？"孔子说："教育他们。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                孔子到卫，冉有替先生赶车。先生说："卫人多呀！"冉有说："人多了，再该增加什么？"先生说："给他们财富。"冉有说："财富够了，再该增加什么？"先生说："教育他们。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                孔子去卫国，冉有驾车。孔子说："人多啊！"冉有说："人多了，再怎么办？"孔子说："使他们富裕。"冉有说："富裕了，再怎么办？"孔子说："教育他们。"
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章主要就"善人"展开论述。孔子借所见市面的"庶"，用《诗经》"比兴"手法引出师徒二人的两问两答，将如何"善人"论述得尽善尽美。</p>
+
+                        <p><strong>一、"庶"正解：多样性</strong></p>
+                        <p>"庶"不单单指"人口众多"，关键还指各种人以及社会生存形态的多样性，也就是"<span class="highlight">不同</span>"。清一色的面孔、一样的服装，不是"庶"。没有自由，就没有多样性，也没有"庶"。</p>
+                        <p>资本主义社会本质上是"资本"的单一性，谈不上真正的"庶"。只有"不相"才能"不同"，只有"不同"才能有多样性。</p>
+
+                        <p><strong>二、"富"正解：全面发展</strong></p>
+                        <p>"富之"是综合的，包括财富、人的素质等。"富"必须在"庶"的基础上，必须在"不同"、"不相"的总原则下才有可能。"<span class="highlight">富</span>"就是人的全面发展，"富之"就是使人全面发展。</p>
+                        <p>更重要的是，"富之"是针对所有的人。如果只针对某一部分人，那连"不相"都达不到。只有先对"贫富"之相"不相"之，才谈得上对所有人的"富之"。</p>
+
+                        <p><strong>三、"教"正解：社会结构</strong></p>
+                        <p>"教"具有"教育、政令、法令、政教、教令、宗旨、学说或学派、宗教"等含义，用现代术语，"教"包括整个上层建筑领域。"<span class="highlight">教</span>"指代整个社会结构。</p>
+                        <p>"富"主要针对个体，"富之"最终落实到每一个个体；而"教"是每一个体连接成社会整体的体现。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">庶、富、教</span>"就是：</p>
+                            <p>• "<span class="highlight">庶</span>"——"不相"而"不同"，多样性（对应"人不相"）</p>
+                            <p>• "<span class="highlight">富</span>"——全面发展（对应"人不相"的充分发展）</p>
+                            <p>• "<span class="highlight">教</span>"——全面发展的自由人的联合体构成的社会结构（对应"人不愠"）</p>
+                        </div>
+
+                        <p>用现代术语：全面发展的自由人联合体构成的社会结构，就是马克思关于共产主义的定义。两千多年的《论语》和一百多年的《共产党宣言》有着<span class="highlight">终极意义上的汇合</span>。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"庶"</div>
+                                <div class="word-meaning">多样性、"不同"</div>
+                                <div class="word-explanation">没有自由就没有多样性，没有"庶"。资本主义只有"资本"单一性，谈不上"庶"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"富"</div>
+                                <div class="word-meaning">人的全面发展</div>
+                                <div class="word-explanation">"富之"必须针对所有人，只有对"贫富"之相"不相"才能谈"富之"。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"教"</div>
+                                <div class="word-meaning">社会结构（上层建筑）</div>
+                                <div class="word-explanation">"教"是全面发展的自由人的联合体构成的社会结构，是"人不愠"世界的社会基础。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"庶矣哉！富之。教之。"</strong>揭示了"善人"之道三字诀：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"庶"</span>——"不相"而"不同"，多样性</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"富"</span>——全面发展，使所有人"富"起来</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">"教"</span>——社会结构的充分发展，最终达"人不愠"大同</p>
+                            <p style="margin-top:15px;"><strong>不同成其大而大同。</strong>马克思和孔子，心心相印、万古不磨。在终极意义上，伟大的思想总有着共同的维度。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第十九章：善人教民七年 -->
+            <div id="chapter19" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>善人教民七年</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：善人、教民七年，亦可以即戎矣。</div>
+                    <div class="sentence-origin">—— 《论语》· 子路篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                孔子说："善人教导人民七年，也可以使他们上阵作战了。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                孔子说："善人教导人民七年，也可使他们前往作战了。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                孔子说："善良的人教导人民七年，也可以使他们去打仗了。"
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>历史上的解释都是错漏百出。所有解释人都暗地里把孔子弄成疯子，语无伦次地糟蹋了两千多年。</p>
+
+                        <p><strong>一、断句和解释的错漏</strong></p>
+                        <p>通常断句是"善人教民七年，亦可以即戎矣"，但应该是"<span class="highlight">善人、教民七年</span>"。"善人"、"教民"是同为"动+名"结构的并列。"善人"就是"庶之"、"富之"，最终"教之"；"教民"就是"教"之体现。</p>
+                        <p>如果"即戎"是"马上打仗"，那"恶人教民三年"比"善人"有效率得多。希特勒、东条英机不就是"教民"吗？</p>
+
+                        <p><strong>二、"即戎"正解</strong></p>
+                        <p>"<span class="highlight">即</span>"，"离"的反义，用现代术语就是"<span class="highlight">融合、同化</span>"。</p>
+                        <p>"<span class="highlight">戎</span>"，古代少数民族，指代未开化的、文明程度比较低的人、民族和国家。</p>
+                        <p>"<span class="highlight">即戎</span>"——融合、同化未开化的、文明程度比较低的人、民族和国家。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">善人、教民七年，亦可以即戎矣。</span>"——"善人"之道形成的强大文明力量，可以融合、同化那些未开化的人、民族和国家。七年是古代习惯用法，表示大概的数字。</p>
+                        </div>
+
+                        <p><strong>三、文明的力量</strong></p>
+                        <p>这一章彰显"善人"之道的力量，"教"的力量，<span class="highlight">文明的力量</span>。</p>
+                        <p>上一章更侧重"善人"之道在国家范围的应用，这一章指出"善人"之道在全世界实现的必然性。大同，只能是大同天下，而不可能是某一国的大同。</p>
+                        <p>孔子不畏惧战争，但光靠战争绝不能大同天下，只有文明才是最终的力量。</p>
+
+                        <p><strong>四、孔子与马克思的再次相遇</strong></p>
+                        <p>作为"圣人之道"低级阶段的"善人"之道的实现只能是一个<span class="highlight">全球性事件</span>，必然要"即戎"而达到天下大同。</p>
+                        <p>马克思同样认为，社会主义的实现只能是一个全球性事件。孔子和马克思又一次相遇。</p>
+
+                        <div class="word-analysis">
+                            <div class="word-item">
+                                <div class="word">"善人、教民"</div>
+                                <div class="word-meaning">"动+名"结构并列</div>
+                                <div class="word-explanation">"善人"就是"庶之"、"富之"、"教之"；"教民"是"教"的具体体现。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"即"</div>
+                                <div class="word-meaning">融合、同化</div>
+                                <div class="word-explanation">"若即若离"，"即"是"离"的反义。</div>
+                            </div>
+                            <div class="word-item">
+                                <div class="word">"戎"</div>
+                                <div class="word-meaning">未开化者</div>
+                                <div class="word-explanation">古代少数民族，指代文明程度比较低的人、民族和国家。</div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"善人、教民七年，亦可以即戎矣"</strong>彰显文明的力量：</p>
+                            <p style="margin-top:10px;">一、"<span class="highlight">善人</span>"之道——"庶、富、教"三字诀</p>
+                            <p style="text-indent:2em;">二、"<span class="highlight">即戎</span>"——融合、同化未开化者</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">天下大同</span>——必须全球性实现</p>
+                            <p style="margin-top:15px;"><strong>《论语》是孔子的《共产党宣言》。</strong>《论语》与《共产党宣言》在终极意义上汇合，孔子是真正的共产主义者，马克思是真正的儒家。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第二十章：以不教民战 -->
+            <div id="chapter20" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>以不教民战是谓弃之</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：以不教民战，是谓弃之。</div>
+                    <div class="sentence-origin">—— 《论语》· 子路篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                孔子说："用没有经过教育的人民去打仗，这就叫抛弃他们。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                孔子说："用不曾教导过的民众去战，便等于是抛弃了他们。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                孔子说："用没有受过教育的人民去打仗，这叫做抛弃他们。"
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章注解历来错误连连。最常见的错误是：将"以不教民战"理解为"用没有教育好的人去战争"，然后把"弃"解释为抛弃。</p>
+
+                        <p><strong>一、关键字正解</strong></p>
+                        <p><span class="highlight">"不"</span>——非、违背。不是"没有"，而是"不遵循"、"不行"。</p>
+                        <p><span class="highlight">"教"</span>——不是"教育"，而是"善人"之道，即"庶之、富之、教之"的"圣人之道"。</p>
+                        <p><span class="highlight">"民战"</span>——使民战。"民"是使动用法，"使民战"。</p>
+                        <p><span class="highlight">"弃"</span>——遗弃、背叛。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">以不教民战，是谓弃之</span>"——不行"善人"之道，用"残、杀"企图使民众战栗、恐惧而治理国家，就是遗弃、背叛民众，而最终也将被民众所遗弃。</p>
+                        </div>
+
+                        <p><strong>二、"残"、"杀"之道的批判</strong></p>
+                        <p>孔子紧接着上一章"善人、教民七年，亦可以即戎矣"，这一章明确指出：违背"善人"之道的治国方式，就是对民众的背叛。</p>
+                        <p>那种企图用暴力、恐怖手段让民众屈服的国家治理方式，表面上似乎有效，但实际上是在遗弃民众，终将被民众所遗弃。</p>
+
+                        <div class="key-quote">
+                            <p>正着说：<span class="highlight">"善人、教民七年，亦可以即戎矣"</span>——善人之道，文明融合</p>
+                            <p>反着说：<span class="highlight">"以不教民战，是谓弃之"</span>——残杀之道，遗弃背叛</p>
+                            <p>两章一正一反，逻辑严密。</p>
+                        </div>
+
+                        <p><strong>三、被遗弃者的命运</strong></p>
+                        <p>历史一再证明：</p>
+                        <p>一用"残"、"杀"治国的，终将被民众推翻</p>
+                        <p>二企图让别国战栗、恐惧的，终将被历史淘汰</p>
+                        <p>三不行"善人"之道的，就是自取灭亡</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"以不教民战，是谓弃之"</strong>揭示了治国理政的根本原则：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"不教"</span>——不行"善人"之道</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"民战"</span>——用残杀使民战栗</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">"弃"</span>——遗弃、背叛民众，终被民众所弃</p>
+                            <p style="margin-top:15px;"><strong>善人之道是唯一的正道，残杀之道是自取灭亡之道。</strong>孔子两千五百年前的警告，至今振聋发聩。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第二十一章：哀公问社 -->
+            <div id="chapter21" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>哀公问社於宰我</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">哀公问社於宰我。宰我对曰：夏后氏以松，殷人以柏，周人以栗，曰，使民战栗焉。子闻之曰：成事不说，遂事不谏，既往不咎。</div>
+                    <div class="sentence-origin">—— 《论语》· 八佾篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                鲁哀公向宰我问关于社主的事。宰我答道："夏代用松木，殷代用柏木，周代用栗木——意思是使人民战栗。"孔子听到了，说："已经做了的事不必说它，已经完成的事不必去规劝，已经过去的事不必责备。"</div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                鲁哀公问宰我关于祭祀土地神的事。宰我答道："夏后氏用松，殷人用柏，周人用栗，意思是使人民战栗。"孔子听到后说："已成的事不再说了，已完成的事不再谏止，已往的事不再追究。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                鲁哀公问宰我有关祭祀土地神的事。宰我答道："夏代用松，殷代用柏，周代用栗，说是要让人民战栗。"孔子听到后说："做了的事不必说了，完成了的事不必再劝阻了，过去的事不必再追究了。"
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章历来被误读。关键是对"使民战栗"和"成事不说"的理解。</p>
+
+                        <p><strong>一、孔子不认同"使民战栗"</strong></p>
+                        <p>孔子并不认为周代用栗木就是"使民战栗"。宰我说"周人以栗，曰，使民战栗焉"，这是宰我的望文生义，而非孔子的观点。</p>
+                        <p>古代"社"是土地神祭祀，也指代国家政权。社主用什么树木，象征国家治理理念。夏用松，殷用柏，周用栗，各有所指。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">夏后氏以松</span>"——松，四季常青，象征永恒。</p>
+                            <p>"<span class="highlight">殷人以柏</span>"——柏，柏树，象征坚定、忠贞。</p>
+                            <p>"<span class="highlight">周人以栗</span>"——栗，栗树，果实坚硬，象征威刑。</p>
+                        </div>
+
+                        <p><strong>二、宰我的错误</strong></p>
+                        <p>宰我在鲁哀公问国事的情况下，望文生义地回答"使民战栗"，实际上是在鼓励哀公行"残"、"杀"之术。</p>
+                        <p>这是非常危险的暗示！孔子因此给予特别告诫。</p>
+
+                        <p><strong>三、"成事不说，遂事不谏，既往不咎"的真正含义</strong></p>
+                        <p>孔子的这句话，关键是要宰我明白：<span class="highlight">周代用栗木是"已成的事"，但不能因此就去行"残"、"杀"之道</span>。</p>
+                        <p>这句话的正确理解是：</p>
+                        <div class="key-quote">
+                            <p>"<span class="highlight">成事不说</span>"——周人用栗木已成事实，不纠缠</p>
+                            <p>"<span class="highlight">遂事不谏</span>"——已成的事不要再引发灾祸</p>
+                            <p>"<span class="highlight">既往不咎</span>"——不要追究，但更不要效法</p>
+                        </div>
+
+                        <p><strong>四、孔子的良苦用心</strong></p>
+                        <p>结合上一章"以不教民战，是谓弃之"的论述，孔子反对"使民战栗"的"残"、"杀"之术是一以贯之的。</p>
+                        <p>即使在自己弟子的言谈中涉及这个方面的暗示，孔子也给予严厉的告诫。</p>
+                        <p>宰我望文生义，在鲁哀公问国事时给出错误的暗示，实际上是在鼓励暴政，孔子必须纠正。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"成事不说，遂事不谏，既往不咎"</strong>是孔子对弟子和国君的双重告诫：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">已成之事</span>——不纠缠历史，但不可效法暴政</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">不要再引灾祸</span>——不能以"已成"为借口行残杀</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">一以贯之</span>——反对"使民战栗"的态度始终如一</p>
+                            <p style="margin-top:15px;"><strong>孔子的"善人"之道容不得半点"残杀"的暗示。</strong>宰我的错误在于将历史事实与治国之道混为一谈，差点误导国君。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第二十二章：夷狄之有君 -->
+            <div id="chapter22" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>夷狄之有君不如诸夏之亡</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：夷狄之有君，不如诸夏之亡也。</div>
+                    <div class="sentence-origin">—— 《论语》· 八佾篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                孔子说："文化落后国家即使有个君主，还不如中国没有君主。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                孔子说："夷狄国家纵有君主，仍不如中国没有君主。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                孔子说："夷狄有君主还比不上华夏没有君主。"
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章被误读了两千年！所有解释都把孔子弄成种族主义者和文化歧视者。</p>
+
+                        <p><strong>一、关键字正解</strong></p>
+                        <p><span class="highlight">"亡"</span>——轻视、蔑视。不是"死亡"或"无"，而是轻视、看不起。</p>
+                        <p><span class="highlight">"诸夏"</span>——指代文明程度比较高的人、民族和国家。</p>
+                        <p><span class="highlight">"夷狄"</span>——指代未开化的、文明程度比较低的人、民族和国家。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">夷狄之有君</span>"——未开化的民族有自己的国体、政体</p>
+                            <p>"<span class="highlight">不如诸夏之亡</span>"——但被文明程度高的民族所轻视</p>
+                        </div>
+
+                        <p><strong>二、全句正解</strong></p>
+                        <p>"<span class="highlight">夷狄之有君，不如诸夏之亡也。</span>"——</p>
+                        <p>未开化的、文明程度比较低的人、民族和国家，虽然有他们自己的国体、政体，但由于没有遵从、依照文明程度比较高的人、民族和国家的政体、国体，而被后者所轻视。</p>
+
+                        <p><strong>三、文明与野蛮的区分</strong></p>
+                        <p>孔子的"诸夏"与"夷狄"是文明程度的区分，而非地域或种族的歧视。</p>
+                        <p>文明程度高的，会轻视那些不行"善人"之道、用"残杀"治国的国家。</p>
+                        <p>这不是傲慢，而是文明对野蛮的正当评价。</p>
+
+                        <div class="key-quote">
+                            <p><span class="highlight">文明之道</span>——善人之道，天下大同</p>
+                            <p><span class="highlight">野蛮之道</span>——残杀之道，遗弃背叛</p>
+                            <p><span class="highlight">文明者轻视野蛮者</span>——正当的道德评判</p>
+                        </div>
+
+                        <p><strong>四、不行善人之道的代价</strong></p>
+                        <p>结合上两章的论述，一个国家、民族：</p>
+                        <p>一如果不行"善人"之道，用"残、杀"企图让别国、别的民族战栗、恐惧</p>
+                        <p>二那么这个国家、民族就是"夷狄"</p>
+                        <p>三最终将被各国、各民族所轻视、所遗弃</p>
+
+                        <p><strong>五、"亡"字的正确理解</strong></p>
+                        <p>"亡"在这里是动词"轻视"，而非形容词"无"或"亡"。</p>
+                        <p>《论语》中"亡"作"无"讲时，多用于"有无"的"无"。</p>
+                        <p>此处"亡"作"轻蔑、藐视"讲，更符合上下文意。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"夷狄之有君，不如诸夏之亡也"</strong>是孔子对文明与野蛮的判断：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"夷狄"</span>——未开化、不行善人之道者</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"诸夏"</span>——文明程度高、遵从善人之道者</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">"亡"</span>——轻视（文明对野蛮的正当评判）</p>
+                            <p style="margin-top:15px;"><strong>文明必然轻视野蛮，这是天道。</strong>不行"善人"之道的国家，终将被文明世界所遗弃。这是历史，也是预言。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第二十三章：为政以德 -->
+            <div id="chapter23" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>为政以德譬</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：为政以德，譬如北辰居其所而众星共之。</div>
+                    <div class="sentence-origin">—— 《论语》· 为政篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                孔子说："用道德来治理国家，自己便会像北极星一般，安稳地居在一定的地方，而别的星辰都环绕着它。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                孔子说："为政者若能尽力道德感化，则会像北方天上那颗星辰一样安处，不待推动而众星自然归向它。"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                孔子说："用德来治理政事，便会像北极星一样在自己的位置上，而众星都环绕着它。"
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章历来被误读。关键是对"德"和"为政"的理解，以及正确的断句。</p>
+
+                        <p><strong>一、错误的断句与解释</strong></p>
+                        <p>通常的断句是"为政以德，譬如北辰，居其所而众星共之"，解释成"以德行来治理国家，就像北极星一样安坐"。</p>
+                        <p>这种解释是以"道本位"为前提的，实际上把这句当成所谓行"仁德之政"的鲁模式基石。</p>
+                        <p>孔子之后的儒家，行的都是这种所谓"仁德之政"的鲁模式，而完全背离了孔子的"齐一变，至於鲁；鲁一变，至於道"。</p>
+
+                        <div class="key-quote">
+                            <p>这种"道本位"的鲁式"仁德之政"模式，惯用的伎俩无非是先编造一些抽象的"仁德"法则，然后以此为标准立其本，进而改造人、塑造人，企图让所有的人都成为"仁德"模子制造出来的统一产品。</p>
+                        </div>
+
+                        <p><strong>二、正确的断句</strong></p>
+                        <p>正确的断句应该是：<span class="highlight">"为政以德譬，如北辰居其所而众星共之"</span>。</p>
+                        <p>"为"——设置、建立，也就是立其本、立其位</p>
+                        <p>"以"——使、令</p>
+                        <p>"德"——得，行"圣人之道"、"善人之道"所得</p>
+                        <p>"譬如"——"譬"+"如"，"譬"是晓谕、使人知晓、引申为彰显；"如"是像</p>
+                        <p>"居其所"的"所"假借为"处"，处所的意思</p>
+                        <p>"共"通假"拱"，执持的意思</p>
+
+                        <p><strong>三、"北辰"的隐喻</strong></p>
+                        <p>"北辰居其所而众星共之"——北极星处在其处而其它星星执持着它。</p>
+                        <p>但北极星位置不是先验的。北极星位置的确定，只是一个人参与其中的当下、现实的具体结果。</p>
+                        <p>其他星星根据北极星位置定出相应位置，也同样是一个人参与其中的当下、现实的具体结果。</p>
+
+                        <div class="key-quote">
+                            <p>北极星位置不是固定不变的，甚至被称为北极星的那星星，也会随着时间的改变而改变。这种位置的确定，都是人参与其中的当下、现实的具体结果，而非先验的原则。</p>
+                        </div>
+
+                        <p><strong>四、"为政以德譬"的真正含义</strong></p>
+                        <p>"为政以德譬"——设置、建立"政"使行"圣人之道"、"善人之道"所得彰显。</p>
+                        <p>就像"北辰居其所而众星共之"的道理一样，并不能把"政"的原则先验地确立。</p>
+                        <p>那种把某种特殊的国体、政体等当成先验的、四海皆准的原则而上帝化的玩意，都不是"为政"之道，只不过是一些根据私利而制造的谎言。</p>
+
+                        <p><strong>五、与马克思的会通</strong></p>
+                        <p>这其实就是上一章所说"圣人之道是大道，更是现实之道，无位可本，又何来本位"的进一步展开。</p>
+                        <p>"为政以德譬"的核心是：<span class="highlight">无所位而生其本，无所本而生其位</span>。</p>
+                        <p>只有明白了这句话，才可能真正明白马克思意义上的"具体问题具体分析"：</p>
+                        <p>一没有任何先验的逻辑是先于具体问题的</p>
+                        <p>二具体分析不是用一些先验的法则去分析，而是从具体问题中找出其现实的逻辑关系来</p>
+                        <p>三政的原则只能在实践中生成，而非预设</p>
+
+                        <div class="key-quote">
+                            <p><span class="highlight">马克思</span>——具体问题具体分析，从具体问题中找出现实的逻辑关系</p>
+                            <p><span class="highlight">孔子</span>——为政以德譬，无所位而生其本，无所本而生其位</p>
+                            <p>结论：马克思和孔子又一次握手了</p>
+                        </div>
+
+                        <p><strong>六、真正的大同</strong></p>
+                        <p>真正的大同，只能是不同成其大而大同。</p>
+                        <p>让世界成为统一产品集中营的大同，是"道本位"的鲁式"仁德之政"模式所制造的怪物。</p>
+                        <p>"为政"之道，必须在现实的实践中生成，而非从任何先验的原则推演而来。</p>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"为政以德譬，如北辰居其所而众星共之"</strong>揭示了真正的为政之道：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"为政"</span>——在实践中设置、建立，而非先验预设</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"以德"</span>——使"圣人之道"彰显</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">"无所位而生其本"</span>——无本位可本，方能生其本</p>
+                            <p style="margin-top:15px;"><strong>为政之道，只能在现实的实践中生成，而非从任何先验的原则推演。</strong>北极星的位置是实践中确定的，"政"的原则同样必须在实践中生成。这才是真正的大道、现实之道。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第二十四章：政者正也 -->
+            <div id="chapter24" class="chapter-section">
+                <div class="chapter-divider">
+                    <span>政者正也</span>
+                </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">季康子问政於孔子，孔子对曰：政者，正也，子帅以正，孰敢不正？</div>
+                    <div class="sentence-origin">—— 《论语》· 颜渊篇</div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">三家注</div>
+                    <div class="scholars-grid">
+                        <div class="scholar-card">
+                            <div class="scholar-name">杨伯峻</div>
+                            <div class="scholar-interpretation">
+                                季康子向孔子问怎样理政。孔子说："政的意思就是端正。统治者自己带头端正，以身作则、作出表率，谁人敢不走正道呢？"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">钱穆</div>
+                            <div class="scholar-interpretation">
+                                季康子问政治于孔子。孔子对道："政是正的意思。你本人作风正，谁敢不正呢？"
+                            </div>
+                        </div>
+                        <div class="scholar-card">
+                            <div class="scholar-name">李泽厚</div>
+                            <div class="scholar-interpretation">
+                                季康子问孔子关于政治的事。孔子答："政治，就是正派的意思。您本人带头正派，谁还敢不正派？"
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-label">缠中说禅详解</div>
+                    <div class="explanation-content">
+                        <p>这一章完全从上一章"为政以德譬，如北辰居其所而众星共之"而来。</p>
+
+                        <p><strong>一、错误的解释</strong></p>
+                        <p>通常把"帅"解释成"表率、带头、引导"，把"正"解释为"端正"，把"为政"当成耶教的牧民之术。</p>
+                        <p>这套玩意，古今中外，不知拐骗多少良家少男成为某种理念、模式的复制品。</p>
+                        <p>最大的奴才就是思想上的奴才，而思想上的奴才最贱的一种就是那些为了某些诸如"民主、自由、人权"之类垃圾抽象概念而炮灰的人。</p>
+
+                        <p><strong>二、关键字正解</strong></p>
+                        <p>"<span class="highlight">帅</span>"——遵循。"帅以正"是"帅之以正之"的省略。</p>
+                        <p>"<span class="highlight">正</span>"——上一表示方向、目标，下足表示向这个方位或目标不偏不倚地走去。这方位或目标就是行"圣人之道"而成就之。</p>
+                        <p>"<span class="highlight">以</span>"——和，表示并列关系。"帅"和"正"、"帅之"和"正之"，是并列关系，相互相成、不能偏废。</p>
+
+                        <div class="key-quote">
+                            <p>"<span class="highlight">帅以正</span>"——用现代术语，就是遵循现实的逻辑，从现实出发，行"圣人之道"而成就之。</p>
+                        </div>
+
+                        <p><strong>三、与北辰隐喻的关系</strong></p>
+                        <p>与"北辰居其所而众星共之"相仿，现实、现实的逻辑如同北极星。</p>
+                        <p>当人把北极星的位置确定后，执持这位置相应就可以定出其他星星位置。</p>
+                        <p>当人从现实出发分析把握了现实关系的逻辑结构后，"<span class="highlight">孰敢不正？</span>"，其它问题就会以此为基础相应地找到解决的办法。</p>
+
+                        <p><strong>四、无所位而生其本</strong></p>
+                        <p>这里不需要任何的先验、抽象原则，而是"无所位而生其本、无所本而生其位"。</p>
+                        <p>但人不是现实的奴隶，现实必须是人参与其中的，没有了人，也无所谓现实，更无所谓现实逻辑。</p>
+                        <p>现实之于人，有着各种不同的选择，究竟如何去选择，就构成了各色各样的政治。</p>
+
+                        <div class="key-quote">
+                            <p>各种政治结构的逻辑支点，都来自现实。这逻辑支点如同北极星，一旦确立，其它就以此为基础相应地构建。</p>
+                            <p>对于儒家、《论语》来说，这个现实的逻辑支点就是行"圣人之道"而成就之。</p>
+                        </div>
+
+                        <p><strong>五、全句正解</strong></p>
+                        <p>"<span class="highlight">政者，正也</span>"——为政，就是要立行"圣人之道"而成就之这一逻辑支点。</p>
+                        <p>"<span class="highlight">子帅以正，孰敢不正？</span>"——为政的人，遵循现实的逻辑，从现实出发，行"圣人之道"而成就之，其它问题就会以此为基础相应地找到解决的办法。</p>
+
+                        <p><strong>六、圣人之道与现实</strong></p>
+                        <p>必须明确的是：现实是最底层的支点，行"圣人之道"而成就之这个逻辑支点必须也必然在现实支点之上。</p>
+                        <p>离开现实，无所谓"圣人之道"。"圣人之道"，不是离开现实的乌托邦。</p>
+                        <p>那种把"圣人之道"装扮成某种口号、旗帜、目标，以此而驱使人，都和"圣人之道"、《论语》、孔子毫无关系。</p>
+                        <p>就像把"共产主义运动"弄成某种口号、旗帜、目标，以此而驱使人，都和马克思毫无关系一样。</p>
+
+                        <div class="key-quote">
+                            <p><span class="highlight">"人能弘道，非道弘人"</span>——孔子和马克思，总是那样心心相印。</p>
+                        </div>
+
+                        <div class="conclusion-box">
+                            <div class="conclusion-title">本章结语</div>
+                            <p><strong>"政者，正也，子帅以正，孰敢不正？"</strong>揭示为政的根本：</p>
+                            <p style="margin-top:10px;">一、<span class="highlight">"政"</span>——立"圣人之道"成就之这一逻辑支点</p>
+                            <p style="text-indent:2em;">二、<span class="highlight">"帅以正"</span>——遵循现实，从现实出发</p>
+                            <p style="text-indent:2em;">三、<span class="highlight">"孰敢不正"</span>——以现实逻辑为基础，相应解决其它问题</p>
+                            <p style="margin-top:15px;"><strong>圣人之道必须在现实中践行，而非悬空的乌托邦。</strong>现实是最底层的支点，"圣人之道"必须在现实支点之上。马克思与孔子，心心相印。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>《论语》详解系列 · 缠中说禅 · Matrix Agent 整理</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        const sections = document.querySelectorAll('.chapter-section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
+</body>
+</html>
