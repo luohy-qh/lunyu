@@ -85,21 +85,22 @@
 
         .nav-btn {
             padding: 12px 24px;
-            background: var(--accent);
+            background: transparent;
+            border: 1px solid transparent;
             border-radius: 4px;
             font-family: inherit;
             font-size: 15px;
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             transition: all 0.2s ease;
         }
 
-        .nav-btn.normal {
-            background: transparent;
-            color: var(--text-color);
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
         }
 
-        .nav-btn.normal:hover {
+        .nav-btn.active {
             background: var(--accent);
             color: white;
         }
@@ -499,10 +500,9 @@
 <body>
     <nav class="top-nav">
         <div class="nav-title"><a href="index.html">📚 国学经典</a></div>
-        <a href="论语详解7.html" class="nav-btn">《论语》</a>
-        <a href="#" class="nav-btn normal">《大学》</a>
-        <a href="#" class="nav-btn normal">《中庸》</a>
-        <a href="#" class="nav-btn normal">《孟子》</a>
+        <a href="论语详解.html" class="nav-btn active">《论语》</a>
+        <a href="禅与坐.html" class="nav-btn">禅与坐</a>
+        <a href="index.html" class="nav-btn">首页</a>
         <div class="nav-spacer"></div>
         <div class="theme-btns">
             <button class="theme-btn" onclick="setTheme('light')">日间</button>
@@ -519,8 +519,8 @@
                 <li><a href="#chapter1">一、学而时习（上）</a></li>
                 <li><a href="#chapter2">二、学而时习（中）</a></li>
                 <li><a href="#chapter3">三、学而时习（下）</a></li>
-                <li><a href="#chapter4">四、朝闻道夕死</a></li>
-                <li><a href="#chapter5">五、逝者如斯夫</a></li>
+                <li><a href="#chapter4">四、逝者如斯夫</a></li>
+                <li><a href="#chapter5">五、人能弘道</a></li>
                 <li><a href="#chapter6">六、攻乎异端</a></li>
                 <li><a href="#chapter7">七、道不同相谋</a></li>
                 <li><a href="#chapter8">八、有教无类</a></li>
@@ -1098,6 +1098,12 @@
                 <div class="chapter-divider">
                     <span>朝闻道夕死</span>
                 </div>
+
+                <section class="content-section quote-section">
+                    <div class="section-label">论语句子</div>
+                    <div class="lunyu-sentence">子曰：朝闻道，夕死可矣。</div>
+                    <div class="sentence-origin">—— 《论语》· 里仁篇</div>
+                </section>
 
                 <section class="content-section">
                     <div class="section-label">三家注</div>
@@ -11235,7 +11241,7 @@
                 const targetId = this.getAttribute('href');
                 const target = document.querySelector(targetId);
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView();
                 }
             });
         });
